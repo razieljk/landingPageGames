@@ -1,7 +1,6 @@
 /* ============================================
    SECCIÓN TECNOLOGÍAS
    ============================================ */
-
 .section-tech {
   padding: 4rem 2rem 6rem;
   max-width: 900px;
@@ -40,31 +39,476 @@
 }
 
 .chip-dot {
-  width: 8px; height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--chip-color);
   box-shadow: 0 0 8px var(--chip-color);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-
 footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 2.5rem;
-  text-align: center;
+  background: #060912;
+  font-family: "Exo 2", sans-serif;
+  color: #fff;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
+/* orbes */
+.footer-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.footer-orb1 {
+  width: 400px;
+  height: 400px;
+  left: -100px;
+  bottom: -200px;
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.05), transparent 65%);
+}
+.footer-orb2 {
+  width: 350px;
+  height: 350px;
+  right: -80px;
+  bottom: -150px;
+  background: radial-gradient(circle, rgba(57, 169, 0, 0.06), transparent 65%);
+}
+.footer-orb3 {
+  width: 300px;
+  height: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -100px;
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.04),
+    transparent 65%
+  );
+}
+
+/* barra top */
+.footer-topbar {
+  width: 100%;
+  height: 2px;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 245, 255, 0.1) 15%,
+    rgba(0, 245, 255, 0.7) 50%,
+    rgba(0, 245, 255, 0.1) 85%,
+    transparent 100%
+  );
+}
+.footer-topbar-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00f5ff;
+  box-shadow:
+    0 0 16px #00f5ff,
+    0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+/* grid principal */
+.footer-body {
+  display: grid;
+  grid-template-columns: 1.4fr 1px 0.9fr 1px 1.5fr;
+  padding: 3rem 3rem 2.5rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  align-items: start;
+  column-gap: 0;
+}
+
+.footer-vdiv {
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.13) 50%, rgba(255,255,255,0.1) 75%, transparent);
+  width: 1px;
+  align-self: stretch;
+  min-height: 160px;
+  margin: 0;        /* ← quita el margin anterior */
+}
+
+.footer-col2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;  /* ← agrega esto */
+}
+
+.footer-col3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-left: 2.5rem;   /* ← mismo tratamiento */
+}
+
+
+/* col 1 */
+.footer-col1 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-right: 2.5rem;  /* ← agrega esto */
+}
 .footer-logo {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.7rem;
-  color: var(--gold);
-  letter-spacing: 2px;
-  margin-bottom: 0.75rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.footer-logo span {
+  color: #00f5ff;
+  text-shadow: 0 0 24px rgba(0, 245, 255, 0.45);
+}
+.footer-brand-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+.footer-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.7;
+  max-width: 260px;
+}
+.footer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.footer-chip {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  padding: 0.28rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.03);
+}
+.footer-stats {
+  display: flex;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-stat-num {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.footer-stat-num span {
+  color: #00f5ff;
+}
+.footer-stat-lbl {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.28);
+  margin-top: 0.2rem;
 }
 
-footer p {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.25);
+/* col 2 */
+.footer-col2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-col-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.22);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  
+}
+.footer-link {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+.footer-link::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.footer-link:hover {
+  color: #00f5ff;
+}
+.footer-link:hover::before {
+  background: #00f5ff;
+}
+
+/* col 3 sena */
+.footer-col3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.footer-sena-block {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.footer-sena-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.footer-sena-ring {
+  position: absolute;
+  border-style: solid;
+  border-color: rgba(57, 169, 0, 0.22);
+  animation: rp 3s ease-in-out infinite;
+}
+.footer-sena-ring.r1 {
+  inset: -7px;
+  border-radius: 18px;
+  border-width: 1px;
+}
+.footer-sena-ring.r2 {
+  inset: -14px;
+  border-radius: 22px;
+  border-width: 1px;
+  border-color: rgba(57, 169, 0, 0.1);
+  animation-delay: 1.5s;
+}
+@keyframes rp {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.footer-sena-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
+  background: rgba(57, 169, 0, 0.07);
+  border: 1px solid rgba(57, 169, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer-sena-c {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(57, 169, 0, 0.55);
+  border-style: solid;
+}
+.footer-sena-c.tl {
+  top: 4px;
+  left: 4px;
+  border-width: 2px 0 0 2px;
+}
+.footer-sena-c.tr {
+  top: 4px;
+  right: 4px;
+  border-width: 2px 2px 0 0;
+}
+.footer-sena-c.bl {
+  bottom: 4px;
+  left: 4px;
+  border-width: 0 0 2px 2px;
+}
+.footer-sena-c.br {
+  bottom: 4px;
+  right: 4px;
+  border-width: 0 2px 2px 0;
+}
+.footer-sena-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  z-index: 1;
+}
+.footer-sena-s {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #39a900;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(57, 169, 0, 0.55);
+}
+.footer-sena-lbl {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.42rem;
+  letter-spacing: 0.28em;
+  color: rgba(57, 169, 0, 0.65);
+}
+.footer-inst {
+  flex: 1;
+}
+.footer-inst-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  color: rgba(57, 169, 0, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+.footer-inst-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #39a900;
+  box-shadow: 0 0 8px rgba(57, 169, 0, 0.7);
+  animation: pd 2s ease-in-out infinite;
+}
+@keyframes pd {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.footer-inst-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.45;
+}
+.footer-inst-name span {
+  color: rgba(0, 245, 255, 0.7);
+  font-size: 0.68rem;
+}
+.footer-inst-rows {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-inst-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.footer-inst-key {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.46rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.22);
+  text-transform: uppercase;
+}
+.footer-inst-val {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+.footer-inst-val.cyan {
+  font-family: "Orbitron", sans-serif;
+  color: #00f5ff;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.35);
+}
+
+/* franja media */
+.footer-mid {
+  margin: 0 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.footer-mid-label {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+.footer-mid-games {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer-game-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c);
+  flex-shrink: 0;
+}
+.footer-game-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.28);
+  text-transform: uppercase;
+}
+.footer-mid-sep {
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 0.6rem;
+}
+
+/* franja inferior */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.9rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.16);
+}
+.footer-ficha {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  color: rgba(0, 245, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.footer-ficha-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(0, 245, 255, 0.4);
 }
