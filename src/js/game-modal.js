@@ -31,7 +31,6 @@
       `,
       difficulty: 3,
       players: "1 jugador",
-      url: "", // Ej: "https://tudominio.com/crucigrama"
       team: [
         {
           initials: "AA",
@@ -75,7 +74,6 @@
       `,
       difficulty: 4,
       players: "1 jugador",
-      url: "", // Ej: "https://tudominio.com/millonario"
       team: [
         {
           initials: "AA",
@@ -120,7 +118,6 @@
       `,
       difficulty: 2,
       players: "1 jugador",
-      url: "", // Ej: "https://tudominio.com/ahorcado"
       team: [
         {
           initials: "AA",
@@ -211,7 +208,6 @@
       `,
       difficulty: 3,
       players: "Multijugador",
-      url: "https://bingoliterario.proyectosadso.com/views/login_usuarios.php", // Ej: "https://tudominio.com/edubingo"
       team: [
         {
           initials: "DR",
@@ -256,7 +252,6 @@
       `,
       difficulty: 3,
       players: "1 jugador",
-      url: "", // Ej: "https://tudominio.com/adivina-palabra"
       team: [
         {
           initials: "AA",
@@ -301,7 +296,6 @@
       `,
       difficulty: 1,
       players: "1 jugador",
-      url: "", // Ej: "https://tudominio.com/memory-cards"
       team: [
         {
           initials: "AA",
@@ -1011,11 +1005,7 @@
       <!-- FOOTER -->
       <div class="gz-modal-footer">
         <span class="gz-footer-note">GAMEZONE · Juego ${game.number} de 06</span>
-        ${
-          game.url
-            ? `<a href="${game.url}" target="_blank" rel="noopener noreferrer" class="gz-play-btn">▶ Jugar Ahora</a>`
-            : `<span class="gz-play-btn gz-play-disabled" title="URL no configurada aún">▶ Jugar Ahora</span>`
-        }
+       
       </div>
     `;
 
