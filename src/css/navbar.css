@@ -1,0 +1,68 @@
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 2, 15, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+}
+
+.nav-logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  letter-spacing: 2px;
+}
+
+.nav-logo span { color: var(--cyan); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--cyan); }
+
+.nav-btn {
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 20px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.nav-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+}

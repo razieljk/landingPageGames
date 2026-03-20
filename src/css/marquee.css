@@ -1,0 +1,38 @@
+/* ============================================
+   MARQUEE
+   ============================================ */
+
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 14px 0;
+  background: rgba(255, 215, 0, 0.03);
+  margin-bottom: 6rem;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.marquee-item {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: rgba(255, 215, 0, 0.35);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.marquee-item span {
+  color: rgba(0, 245, 255, 0.4);
+  margin: 0 1.5rem;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

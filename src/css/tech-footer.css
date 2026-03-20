@@ -1,0 +1,70 @@
+/* ============================================
+   SECCIÓN TECNOLOGÍAS
+   ============================================ */
+
+.section-tech {
+  padding: 4rem 2rem 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tech-chips {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.tech-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 12px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.tech-chip:hover {
+  border-color: var(--chip-color);
+  color: var(--chip-color);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+}
+
+.chip-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--chip-color);
+  box-shadow: 0 0 8px var(--chip-color);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+footer p {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.25);
+}

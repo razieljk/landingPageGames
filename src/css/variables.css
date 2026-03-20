@@ -1,0 +1,32 @@
+/* ============================================
+   VARIABLES GLOBALES & RESET
+   ============================================ */
+
+:root {
+  --gold:    #FFD700;
+  --gold2:   #FFA500;
+  --cyan:    #00F5FF;
+  --pink:    #FF00A0;
+  --purple:  #8B00FF;
+  --dark:    #05020F;
+  --dark2:   #0D0520;
+  --card-bg: rgba(13, 5, 32, 0.85);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark);
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
