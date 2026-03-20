@@ -1,370 +1,756 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameZone — Juegos Clásicos</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameZone — Juegos Clásicos</title>
 
-  <!-- FUENTES -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FUENTES -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- ESTILOS -->
-  <link rel="stylesheet" href="src/css/variables.css">
-  <link rel="stylesheet" href="src/css/background.css">
-  <link rel="stylesheet" href="src/css/navbar.css">
-  <link rel="stylesheet" href="src/css/hero.css">
-  <link rel="stylesheet" href="src/css/marquee.css">
-  <link rel="stylesheet" href="src/css/games.css">
-  <link rel="stylesheet" href="src/css/tech-footer.css">
-</head>
-<body>
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="src/css/variables.css" />
+    <link rel="stylesheet" href="src/css/background.css" />
+    <link rel="stylesheet" href="src/css/navbar.css" />
+    <link rel="stylesheet" href="src/css/hero.css" />
+    <link rel="stylesheet" href="src/css/marquee.css" />
+    <link rel="stylesheet" href="src/css/games.css" />
+    <link rel="stylesheet" href="src/css/tech-footer.css" />
+    <link rel="stylesheet" href="src/css/instructores.css" />
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
 
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursorDot"></div>
+    <!-- SCANLINES -->
+    <div class="scanlines"></div>
 
-  <!-- SCANLINES -->
-  <div class="scanlines"></div>
-
-  <!-- FONDO -->
-  <div class="bg-canvas">
-    <div class="stars"></div>
-    <div class="glow-orb orb1"></div>
-    <div class="glow-orb orb2"></div>
-    <div class="glow-orb orb3"></div>
-    <div class="grid-floor"></div>
-    <div class="particles" id="particles"></div>
-  </div>
-
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-logo">GAME<span>ZONE</span></div>
-    <ul class="nav-links">
-      <li><a href="#juegos">Juegos</a></li>
-      <li><a href="#tech">Tecnología</a></li>
-      <li><a href="#">Acerca de</a></li>
-    </ul>
-    <button class="nav-btn">🎮 Jugar Ahora</button>
-  </nav>
-
-  <div class="page">
-
-    <!-- ==================== HERO ==================== -->
-    <section class="hero">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Colección Activa — 6 Juegos
-      </div>
-      <h1 class="hero-title">
-        <span class="title-line1">JUEGOS</span>
-        <span class="title-line2">CLÁSICOS</span>
-        <span class="title-line3">REINVENTADOS</span>
-      </h1>
-      <p class="hero-sub">
-        Una colección de juegos de siempre, construidos desde cero con PHP, JavaScript, CSS y SQL. Diseñados para divertir, desafiar y sorprender.
-      </p>
-      <div class="hero-cta">
-        <a href="#juegos" class="btn-primary">▶ Explorar Juegos</a>
-        <a href="#tech"   class="btn-secondary">Ver Tecnologías</a>
-      </div>
-      <div class="stats-bar">
-        <div class="stat"><span class="stat-num">6</span><div class="stat-label">Juegos</div></div>
-        <div class="stat"><span class="stat-num">4</span><div class="stat-label">Tecnologías</div></div>
-        <div class="stat"><span class="stat-num">100%</span><div class="stat-label">Hecho a mano</div></div>
-        <div class="stat"><span class="stat-num">∞</span><div class="stat-label">Diversión</div></div>
-      </div>
-    </section>
-
-    <!-- ==================== MARQUEE ==================== -->
-    <div class="marquee-wrap">
-      <div class="marquee-track">
-        <span class="marquee-item">Crucigrama <span>✦</span></span>
-        <span class="marquee-item">¿Quién quiere ser millonario? <span>✦</span></span>
-        <span class="marquee-item">El Ahorcado <span>✦</span></span>
-        <span class="marquee-item">Trivia Quiz <span>✦</span></span>
-        <span class="marquee-item">Adivina la Palabra <span>✦</span></span>
-        <span class="marquee-item">Memory Card <span>✦</span></span>
-        <span class="marquee-item">Crucigrama <span>✦</span></span>
-        <span class="marquee-item">¿Quién quiere ser millonario? <span>✦</span></span>
-        <span class="marquee-item">El Ahorcado <span>✦</span></span>
-        <span class="marquee-item">Trivia Quiz <span>✦</span></span>
-        <span class="marquee-item">Adivina la Palabra <span>✦</span></span>
-        <span class="marquee-item">Memory Card <span>✦</span></span>
-      </div>
+    <!-- FONDO -->
+    <div class="bg-canvas">
+      <div class="stars"></div>
+      <div class="glow-orb orb1"></div>
+      <div class="glow-orb orb2"></div>
+      <div class="glow-orb orb3"></div>
+      <div class="grid-floor"></div>
+      <div class="particles" id="particles"></div>
     </div>
 
-    <!-- ==================== JUEGOS ==================== -->
-    <section class="section-games" id="juegos">
-      <div class="section-header">
-        <span class="section-label">// selecciona y juega</span>
-        <h2 class="section-title">Nuestros <span>Juegos</span></h2>
-        <div class="section-line"></div>
-      </div>
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-logo">GAME<span>ZONE</span></div>
+      <ul class="nav-links">
+        <li><a href="#juegos">Juegos</a></li>
+        <li><a href="#tech">Tecnología</a></li>
+        <li><a href="#instructores">Instructores</a></li>
+        <li><a href="#">Acerca de</a></li>
+      </ul>
+      <button class="nav-btn">🎮 Jugar Ahora</button>
+    </nav>
 
-      <div class="games-scroll-wrap">
-        <div class="fade-left"></div>
-        <div class="fade-right"></div>
-        <div class="games-grid" id="gamesTrack">
-
-          <!-- 01 · CRUCIGRAMA -->
-          <a href="#" class="game-card" style="--card-accent:#FFD700; --card-accent-bg:rgba(255,215,0,0.08);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">01</div>
-              <span class="game-emoji">✏️</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-php">PHP</span>
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-sql">SQL</span>
-              </div>
-              <div class="card-title">Crucigrama</div>
-              <div class="card-desc">Completa el crucigrama con palabras temáticas. Las palabras se guardan en base de datos y cambian cada día.</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-                </div>
-                <div class="card-players">👤 1 jugador</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-          <!-- 02 · QUIÉN QUIERE SER MILLONARIO -->
-          <a href="#" class="game-card" style="--card-accent:#FF9F00; --card-accent-bg:rgba(255,159,0,0.1);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">02</div>
-              <span class="game-emoji">💰</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-php">PHP</span>
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-css">CSS</span>
-                <span class="tag tag-sql">SQL</span>
-              </div>
-              <div class="card-title">¿Quién Quiere Ser Millonario?</div>
-              <div class="card-desc">15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás al millón de puntos?</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
-                </div>
-                <div class="card-players">👤 1 jugador</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-          <!-- 03 · EL AHORCADO -->
-          <a href="#" class="game-card" style="--card-accent:#FF00A0; --card-accent-bg:rgba(255,0,160,0.08);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">03</div>
-              <span class="game-emoji">🪢</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-php">PHP</span>
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-sql">SQL</span>
-              </div>
-              <div class="card-title">El Ahorcado</div>
-              <div class="card-desc">Adivina la palabra letra por letra antes de que se acaben los intentos. Palabras aleatorias desde la base de datos.</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
-                </div>
-                <div class="card-players">👤 1 jugador</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-          <!-- 04 · TRIVIA QUIZ -->
-          <a href="#" class="game-card" style="--card-accent:#00F5FF; --card-accent-bg:rgba(0,245,255,0.07);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">04</div>
-              <span class="game-emoji">🧠</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-php">PHP</span>
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-sql">SQL</span>
-              </div>
-              <div class="card-title">Trivia Quiz</div>
-              <div class="card-desc">Responde preguntas de cultura general contra el reloj. Compite por el top del ranking global.</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-                </div>
-                <div class="card-players">👥 Ranking global</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-          <!-- 05 · ADIVINA LA PALABRA -->
-          <a href="#" class="game-card" style="--card-accent:#7C3AED; --card-accent-bg:rgba(124,58,237,0.1);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">05</div>
-              <span class="game-emoji">🔤</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-php">PHP</span>
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-css">CSS</span>
-              </div>
-              <div class="card-title">Adivina la Palabra</div>
-              <div class="card-desc">Al estilo Wordle: tienes 6 intentos para adivinar la palabra. Las pistas de colores te guían.</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
-                </div>
-                <div class="card-players">👤 1 jugador</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-          <!-- 06 · MEMORY CARDS -->
-          <a href="#" class="game-card" style="--card-accent:#10B981; --card-accent-bg:rgba(16,185,129,0.08);">
-            <div class="card-glow"></div>
-            <div class="card-img-wrap">
-              <div class="card-number">06</div>
-              <span class="game-emoji">🃏</span>
-              <div class="card-stripe"></div>
-              <div class="play-btn">▶</div>
-            </div>
-            <div class="card-body">
-              <div class="card-tags">
-                <span class="tag tag-js">JS</span>
-                <span class="tag tag-css">CSS</span>
-                <span class="tag tag-php">PHP</span>
-              </div>
-              <div class="card-title">Memory Cards</div>
-              <div class="card-desc">Voltea cartas y encuentra los pares iguales. Guarda tu récord de tiempo en el servidor.</div>
-              <div class="card-footer-bar">
-                <div class="card-difficulty">
-                  <span>Dificultad</span>
-                  <div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-                </div>
-                <div class="card-players">👤 1 jugador</div>
-              </div>
-            </div>
-            <div class="card-sep"></div>
-            <div class="card-team">
-              <div class="team-header">▸ Equipo desarrollador</div>
-              <div class="team-members">
-                <div class="member"><div class="member-av">AA</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Programador principal</span></div></div>
-                <div class="member"><div class="member-av">BB</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Diseño y UI</span></div></div>
-                <div class="member"><div class="member-av">CC</div><div class="member-info"><span class="member-name">Nombre Apellido</span><span class="member-role">Base de datos</span></div></div>
-              </div>
-            </div>
-          </a>
-
-        </div><!-- end games-grid -->
-      </div><!-- end games-scroll-wrap -->
-
-      <!-- BARRA DE PROGRESO -->
-      <div class="games-progress-wrap">
-        <span class="games-progress-label" id="gamesLabel">01 / 06</span>
-        <div class="games-progress-track">
-          <div class="games-progress-fill" id="gamesFill"></div>
+    <div class="page">
+      <!-- ==================== HERO ==================== -->
+      <section class="hero">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Colección Activa — 6 Juegos
         </div>
-        <span class="games-progress-label">GAMEZONE</span>
+        <h1 class="hero-title">
+          <span class="title-line1">JUEGOS</span>
+          <span class="title-line2">CLÁSICOS</span>
+          <span class="title-line3">REINVENTADOS</span>
+        </h1>
+        <p class="hero-sub">
+          Una colección de juegos de siempre, construidos desde cero con PHP,
+          JavaScript, CSS y SQL. Diseñados para divertir, desafiar y sorprender.
+        </p>
+        <div class="hero-cta">
+          <a href="#juegos" class="btn-primary">▶ Explorar Juegos</a>
+          <a href="#tech" class="btn-secondary">Ver Tecnologías</a>
+        </div>
+        <div class="stats-bar">
+          <div class="stat">
+            <span class="stat-num">6</span>
+            <div class="stat-label">Juegos</div>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4</span>
+            <div class="stat-label">Tecnologías</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== MARQUEE ==================== -->
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <span class="marquee-item">Crucigrama <span>✦</span></span>
+          <span class="marquee-item"
+            >¿Quién quiere ser millonario? <span>✦</span></span
+          >
+          <span class="marquee-item">El Ahorcado <span>✦</span></span>
+          <span class="marquee-item">Bingo Literario <span>✦</span></span>
+          <span class="marquee-item">Adivina la Palabra <span>✦</span></span>
+          <span class="marquee-item">Memory Card <span>✦</span></span>
+          <span class="marquee-item">Crucigrama <span>✦</span></span>
+          <span class="marquee-item"
+            >¿Quién quiere ser millonario? <span>✦</span></span
+          >
+          <span class="marquee-item">El Ahorcado <span>✦</span></span>
+          <span class="marquee-item">Bingo Literario <span>✦</span></span>
+          <span class="marquee-item">Adivina la Palabra <span>✦</span></span>
+          <span class="marquee-item">Memory Card <span>✦</span></span>
+        </div>
       </div>
-    </section>
 
-    <!-- ==================== TECNOLOGÍAS ==================== -->
-    <section class="section-tech" id="tech">
-      <span class="section-label">// construido con</span>
-      <h2 class="section-title">El <span>Stack</span> Tecnológico</h2>
-      <div class="section-line"></div>
-      <p style="margin-top:1.2rem; font-size:0.9rem; color:rgba(255,255,255,0.4); line-height:1.7;">
-        Cada juego está construido usando tecnologías web estándar, sin frameworks externos. Todo hecho a mano.
-      </p>
-      <div class="tech-chips">
-        <div class="tech-chip" style="--chip-color:#a78bfa;"><span class="chip-dot"></span> PHP</div>
-        <div class="tech-chip" style="--chip-color:#FFD700;"><span class="chip-dot"></span> JavaScript</div>
-        <div class="tech-chip" style="--chip-color:#38bdf8;"><span class="chip-dot"></span> CSS3</div>
-        <div class="tech-chip" style="--chip-color:#4ade80;"><span class="chip-dot"></span> MySQL / SQL</div>
-        <div class="tech-chip" style="--chip-color:#f97316;"><span class="chip-dot"></span> HTML5</div>
+      <!-- ==================== JUEGOS ==================== -->
+      <section class="section-games" id="juegos">
+        <div class="section-header">
+          <span class="section-label">// selecciona y juega</span>
+          <h2 class="section-title">Nuestros <span>Juegos</span></h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="games-scroll-wrap">
+          <div class="fade-left"></div>
+          <div class="fade-right"></div>
+          <div class="games-grid" id="gamesTrack">
+            <!-- 01 · CRUCIGRAMA -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #ffd700;
+                --card-accent-bg: rgba(255, 215, 0, 0.08);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">01</div>
+                <span class="game-emoji">✏️</span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-php">PHP</span>
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-sql">SQL</span>
+                </div>
+                <div class="card-title">Crucigrama</div>
+                <div class="card-desc">
+                  Completa el crucigrama con palabras temáticas. Las palabras se
+                  guardan en base de datos y cambian cada día.
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👤 1 jugador</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- 02 · QUIÉN QUIERE SER MILLONARIO -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #ff9f00;
+                --card-accent-bg: rgba(255, 159, 0, 0.1);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">02</div>
+                <span class="game-emoji">💰</span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-php">PHP</span>
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-css">CSS</span>
+                  <span class="tag tag-sql">SQL</span>
+                </div>
+                <div class="card-title">¿Quién Quiere Ser Millonario?</div>
+                <div class="card-desc">
+                  15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás
+                  al millón de puntos?
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👤 1 jugador</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- 03 · EL AHORCADO -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #ff00a0;
+                --card-accent-bg: rgba(255, 0, 160, 0.08);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">03</div>
+                <span class="game-emoji">🪢 </span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-php">PHP</span>
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-sql">SQL</span>
+                </div>
+                <div class="card-title">El Ahorcado</div>
+                <div class="card-desc">
+                  Adivina la palabra letra por letra antes de que se acaben los
+                  intentos. Palabras aleatorias desde la base de datos.
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👤 1 jugador</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- 04 · Bingo Literario -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #00f5ff;
+                --card-accent-bg: rgba(0, 245, 255, 0.07);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">04</div>
+                <span class="game-emoji">🧠</span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-php">PHP</span>
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-sql">SQL</span>
+                </div>
+                <div class="card-title">Bingo Literario</div>
+                <div class="card-desc">
+                  Responde preguntas de cultura general contra el reloj. Compite
+                  por el top del ranking global.
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👥 Ranking global</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- 05 · ADIVINA LA PALABRA -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #7c3aed;
+                --card-accent-bg: rgba(124, 58, 237, 0.1);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">05</div>
+                <span class="game-emoji">🔤</span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-php">PHP</span>
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-css">CSS</span>
+                </div>
+                <div class="card-title">Adivina la Palabra</div>
+                <div class="card-desc">
+                  Al estilo Wordle: tienes 6 intentos para adivinar la palabra.
+                  Las pistas de colores te guían.
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👤 1 jugador</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- 06 · MEMORY CARDS -->
+            <a
+              href="#"
+              class="game-card"
+              style="
+                --card-accent: #10b981;
+                --card-accent-bg: rgba(16, 185, 129, 0.08);
+              "
+            >
+              <div class="card-glow"></div>
+              <div class="card-img-wrap">
+                <div class="card-number">06</div>
+                <span class="game-emoji">🃏</span>
+                <div class="card-stripe"></div>
+                <div class="play-btn">▶</div>
+              </div>
+              <div class="card-body">
+                <div class="card-tags">
+                  <span class="tag tag-js">JS</span>
+                  <span class="tag tag-css">CSS</span>
+                  <span class="tag tag-php">PHP</span>
+                </div>
+                <div class="card-title">Memory Cards</div>
+                <div class="card-desc">
+                  Voltea cartas y encuentra los pares iguales. Guarda tu récord
+                  de tiempo en el servidor.
+                </div>
+                <div class="card-footer-bar">
+                  <div class="card-difficulty">
+                    <span>Dificultad</span>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="card-players">👤 1 jugador</div>
+                </div>
+              </div>
+              <div class="card-sep"></div>
+              <div class="card-team">
+                <div class="team-header">▸ Equipo desarrollador</div>
+                <div class="team-members">
+                  <div class="member">
+                    <div class="member-av">AA</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Programador principal</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">BB</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Diseño y UI</span>
+                    </div>
+                  </div>
+                  <div class="member">
+                    <div class="member-av">CC</div>
+                    <div class="member-info">
+                      <span class="member-name">Nombre Apellido</span
+                      ><span class="member-role">Base de datos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- end games-grid -->
+        </div>
+        <!-- end games-scroll-wrap -->
+
+        <!-- BARRA DE PROGRESO -->
+        <div class="games-progress-wrap">
+          <span class="games-progress-label" id="gamesLabel">01 / 06</span>
+          <div class="games-progress-track">
+            <div class="games-progress-fill" id="gamesFill"></div>
+          </div>
+          <span class="games-progress-label">GAMEZONE</span>
+        </div>
+      </section>
+
+      
+      <!-- ==================== TECNOLOGÍAS ==================== -->
+      <section class="section-tech" id="tech">
+        <span class="section-label">// construido con</span>
+        <h2 class="section-title">El <span>Stack</span> Tecnológico</h2>
+        <div class="section-line"></div>
+        <p
+          style="
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.7;
+          "
+        >
+          Cada juego está construido usando tecnologías web estándar, sin
+          frameworks externos. Todo hecho a mano.
+        </p>
+        <div class="tech-chips">
+          <div class="tech-chip" style="--chip-color: #a78bfa">
+            <span class="chip-dot"></span> PHP
+          </div>
+          <div class="tech-chip" style="--chip-color: #ffd700">
+            <span class="chip-dot"></span> JavaScript
+          </div>
+          <div class="tech-chip" style="--chip-color: #38bdf8">
+            <span class="chip-dot"></span> CSS3
+          </div>
+          <div class="tech-chip" style="--chip-color: #4ade80">
+            <span class="chip-dot"></span> MySQL / SQL
+          </div>
+          <div class="tech-chip" style="--chip-color: #f97316">
+            <span class="chip-dot"></span> HTML5
+          </div>
+        </div>
+      </section>
+
+      <!-- DIVISOR -->
+      <div class="section-divider-instructors">
+        <div class="div-line"></div>
+        <div class="div-center">
+          <div class="div-diamond sm"></div>
+          <div class="div-diamond"></div>
+          &nbsp;DOCENTES&nbsp;
+          <div class="div-diamond"></div>
+          <div class="div-diamond sm"></div>
+        </div>
+        <div class="div-line right"></div>
       </div>
-    </section>
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-      <div class="footer-logo">GAME<span style="color:#00F5FF;">ZONE</span></div>
-      <p>Hecho con ❤️ y mucho código — PHP · JS · CSS · SQL</p>
-    </footer>
+      <!-- ==================== INSTRUCTORES-->
+      <section class="section-instructors" id="instructores">
+        <div class="section-header">
+          <span class="section-label">// detrás del proyecto</span>
+          <h2 class="section-title">Nuestros <span>Instructores</span></h2>
+          <div class="section-line"></div>
+          <p class="instructors-sub">
+            Los docentes que guiaron, desafiaron y acompañaron cada línea de
+            código de este proyecto.
+          </p>
+        </div>
 
-  </div><!-- end .page -->
+        <div class="instructors-grid">
+          <!-- INSTRUCTOR 01 -->
+          <div class="instructor-card">
+            <div class="instructor-card-inner">
+              <div class="inst-number">01</div>
+              <div class="inst-photo-wrap">
+                <div class="inst-photo-frame">
+                  <img
+                    src="foto-instructor-1.jpg"
+                    alt="Instructor 1"
+                    class="inst-photo"
+                  />
+                  <!-- Si no hay foto, el placeholder se muestra automáticamente -->
+                  <div class="inst-photo-placeholder">
+                    <span class="inst-initials">IN</span>
+                  </div>
+                </div>
+                <div class="inst-scan-line"></div>
+                <div class="inst-corner tl"></div>
+                <div class="inst-corner tr"></div>
+                <div class="inst-corner bl"></div>
+                <div class="inst-corner br"></div>
+              </div>
+              <div class="inst-info">
+                <div class="inst-badge">
+                  <span class="badge-dot" style="--dot-color: #ffd700"></span>
+                  Instructor
+                </div>
+                <h3 class="inst-name">Nombre del Instructor</h3>
+                <p class="inst-role">Docente de Desarrollo Web</p>
+                <p class="inst-desc">
+                  Descripción breve del instructor, su área de expertise y su
+                  aporte al proyecto.
+                </p>
+                <div class="inst-tags">
+                  <span class="inst-tag">PHP</span>
+                  <span class="inst-tag">SQL</span>
+                  <span class="inst-tag">Backend</span>
+                </div>
+              </div>
+            </div>
+            <div class="inst-glow" style="--inst-color: #ffd700"></div>
+          </div>
 
-  <!-- SCRIPTS (al final para no bloquear el render) -->
-  <script src="src/js/cursor.js"></script>
-  <script src="src/js/particles.js"></script>
-  <script src="src/js/games-scroll.js"></script>
+          <!-- INSTRUCTOR 02 -->
+          <div class="instructor-card featured">
+            <div class="instructor-card-inner">
+              <div class="inst-number">02</div>
+              <div class="inst-photo-wrap">
+                <div class="inst-photo-frame">
+                  <img
+                    src="foto-instructor-2.jpg"
+                    alt="Instructor 2"
+                    class="inst-photo"
+                  />
+                  <div class="inst-photo-placeholder">
+                    <span class="inst-initials">IN</span>
+                  </div>
+                </div>
+                <div class="inst-scan-line"></div>
+                <div class="inst-corner tl"></div>
+                <div class="inst-corner tr"></div>
+                <div class="inst-corner bl"></div>
+                <div class="inst-corner br"></div>
+              </div>
+              <div class="inst-info">
+                <div class="inst-badge">
+                  <span class="badge-dot" style="--dot-color: #00f5ff"></span>
+                  Instructor
+                </div>
+                <h3 class="inst-name">Nombre del Instructor</h3>
+                <p class="inst-role">Docente de Interfaces y UX</p>
+                <p class="inst-desc">
+                  Descripción breve del instructor, su área de expertise y su
+                  aporte al proyecto.
+                </p>
+                <div class="inst-tags">
+                  <span class="inst-tag">CSS3</span>
+                  <span class="inst-tag">JavaScript</span>
+                  <span class="inst-tag">UX/UI</span>
+                </div>
+              </div>
+            </div>
+            <div class="inst-glow" style="--inst-color: #00f5ff"></div>
+          </div>
 
-</body>
+          <!-- INSTRUCTOR 03 -->
+          <div class="instructor-card">
+            <div class="instructor-card-inner">
+              <div class="inst-number">03</div>
+              <div class="inst-photo-wrap">
+                <div class="inst-photo-frame">
+                  <img
+                    src="foto-instructor-3.jpg"
+                    alt="Instructor 3"
+                    class="inst-photo"
+                  />
+                  <div class="inst-photo-placeholder">
+                    <span class="inst-initials">IN</span>
+                  </div>
+                </div>
+                <div class="inst-scan-line"></div>
+                <div class="inst-corner tl"></div>
+                <div class="inst-corner tr"></div>
+                <div class="inst-corner bl"></div>
+                <div class="inst-corner br"></div>
+              </div>
+              <div class="inst-info">
+                <div class="inst-badge">
+                  <span class="badge-dot" style="--dot-color: #ff00a0"></span>
+                  Instructor
+                </div>
+                <h3 class="inst-name">Nombre del Instructor</h3>
+                <p class="inst-role">Docente de Bases de Datos</p>
+                <p class="inst-desc">
+                  Descripción breve del instructor, su área de expertise y su
+                  aporte al proyecto.
+                </p>
+                <div class="inst-tags">
+                  <span class="inst-tag">MySQL</span>
+                  <span class="inst-tag">SQL</span>
+                  <span class="inst-tag">Modelado</span>
+                </div>
+              </div>
+            </div>
+            <div class="inst-glow" style="--inst-color: #ff00a0"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== FOOTER ==================== -->
+      <footer>
+        <div class="footer-logo">
+          GAME<span style="color: #00f5ff">ZONE</span>
+        </div>
+        <p>Hecho con ❤️ y mucho código — PHP · JS · CSS · SQL</p>
+      </footer>
+    </div>
+    <!-- end .page -->
+
+    <!-- SCRIPTS (al final para no bloquear el render) -->
+    <script src="src/js/cursor.js"></script>
+    <script src="src/js/particles.js"></script>
+    <script src="src/js/games-scroll.js"></script>
+    <script src="src/js/game-modal.js"></script>
+  </body>
 </html>

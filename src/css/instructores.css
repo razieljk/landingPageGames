@@ -1,0 +1,391 @@
+/* ——— SECCIÓN INSTRUCTORES ——— */
+.section-instructors {
+  padding: 6rem 2rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.instructors-sub {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* ——— GRID ——— */
+.instructors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+/* ——— CARD BASE ——— */
+.instructor-card {
+  position: relative;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 0.68, 0, 1.2),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: default;
+}
+.instructor-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* card destacada (central) */
+.instructor-card.featured {
+  border-color: rgba(0, 245, 255, 0.2);
+  background: rgba(0, 245, 255, 0.04);
+}
+.instructor-card.featured:hover {
+  border-color: rgba(0, 245, 255, 0.45);
+}
+
+/* ——— GLOW DINÁMICO ——— */
+.inst-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 18px;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--inst-color) 30%, transparent),
+    transparent 65%
+  );
+  transition: opacity 0.4s ease;
+}
+.instructor-card:hover .inst-glow {
+  opacity: 1;
+}
+
+/* ——— INNER ——— */
+.instructor-card-inner {
+  padding: 2rem 1.75rem 2rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* ——— NÚMERO ——— */
+.inst-number {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.18);
+  margin-bottom: -0.5rem;
+}
+
+/* ——— FOTO ——— */
+.inst-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* retrato vertical */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.inst-photo-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* imagen real */
+.inst-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: saturate(0.85) contrast(1.05);
+  transition:
+    filter 0.4s ease,
+    transform 0.5s ease;
+}
+.instructor-card:hover .inst-photo {
+  filter: saturate(1.1) contrast(1.08);
+  transform: scale(1.04);
+}
+
+/* placeholder si no hay foto */
+.inst-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+  z-index: 0;
+}
+/* Muestra placeholder solo si la imagen falla */
+.inst-photo {
+  position: relative;
+  z-index: 1;
+}
+.inst-photo[src=""],
+.inst-photo:not([src]) {
+  display: none;
+}
+
+.inst-initials {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.1em;
+}
+
+/* línea scan animada */
+.inst-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 245, 255, 0.5),
+    transparent
+  );
+  top: -5%;
+  animation: scanMove 4s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.instructor-card:hover .inst-scan-line {
+  opacity: 1;
+}
+
+@keyframes scanMove {
+  0% {
+    top: -5%;
+  }
+  100% {
+    top: 105%;
+  }
+}
+
+/* esquinas decorativas */
+.inst-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(255, 255, 255, 0.35);
+  border-style: solid;
+  z-index: 4;
+  transition: border-color 0.3s;
+}
+.instructor-card:hover .inst-corner {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.inst-corner.tl {
+  top: 6px;
+  left: 6px;
+  border-width: 2px 0 0 2px;
+}
+.inst-corner.tr {
+  top: 6px;
+  right: 6px;
+  border-width: 2px 2px 0 0;
+}
+.inst-corner.bl {
+  bottom: 6px;
+  left: 6px;
+  border-width: 0 0 2px 2px;
+}
+.inst-corner.br {
+  bottom: 6px;
+  right: 6px;
+  border-width: 0 2px 2px 0;
+}
+
+/* ——— INFO ——— */
+.inst-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+.inst-badge .badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dot-color, #fff);
+  box-shadow: 0 0 6px var(--dot-color, #fff);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.75);
+  }
+}
+
+.inst-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  margin: 0.25rem 0 0;
+}
+.instructor-card.featured .inst-name {
+  color: #00f5ff;
+}
+
+.inst-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0.3rem 0 0;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.inst-desc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+  margin: 0.6rem 0 0;
+  font-family: "Exo 2", sans-serif;
+}
+
+/* ——— TAGS ——— */
+.inst-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+.inst-tag {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+}
+.instructor-card:hover .inst-tag {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ——— RESPONSIVE ——— */
+@media (max-width: 900px) {
+  .instructors-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .instructors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+}
+
+/* ——— DIVISOR DE SECCIÓN INSTRUCTORES ——— */
+.section-divider-instructors {
+  position: relative;
+  width: 100%;
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+.section-divider-instructors::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 245, 255, 0.04) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.div-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 245, 255, 0.4),
+    rgba(0, 245, 255, 0.2),
+    transparent
+  );
+}
+
+.div-line.right {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 245, 255, 0.2),
+    rgba(0, 245, 255, 0.4),
+    transparent
+  );
+}
+
+.div-center {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: rgba(0, 245, 255, 0.6);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.div-diamond {
+  width: 7px;
+  height: 7px;
+  background: #00f5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px #00f5ff;
+}
+
+.div-diamond.sm {
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 245, 255, 0.5);
+  box-shadow: none;
+}
