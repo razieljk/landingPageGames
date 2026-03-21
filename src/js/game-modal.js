@@ -232,43 +232,38 @@
     {
       id: 5,
       number: "05",
-      title: "Adivina la Palabra",
-      emoji: "🔤",
+      title: "Y esa pregunta?",
+      emoji: "🤔❓",
       accent: "#7C3AED",
       accentBg: "rgba(124,58,237,0.12)",
-      tags: ["PHP", "JS", "CSS"],
-      shortDesc: "Al estilo Wordle: 6 intentos para adivinar la palabra.",
+      tags: ["PHP", "JS", "CSS", "SQL"],
+      shortDesc:
+        "Trivia competitiva por fichas: responde rápido, gana más puntos y lleva tu ficha al top.",
       howToPlay: `
-        <p>Versión en español del famoso Wordle. Usa la lógica y las pistas de color para descubrir la palabra en el menor número de intentos posible.</p>
-        <ul>
-          <li>📝 Debes adivinar una palabra de <strong>5 letras</strong> en un máximo de <strong>6 intentos</strong>.</li>
-          <li>⌨️ Escribe una palabra válida y presiona Enter para confirmarla.</li>
-          <li>🟩 <strong>Verde</strong>: la letra está en la posición correcta.</li>
-          <li>🟨 <strong>Amarillo</strong>: la letra está en la palabra pero en otra posición.</li>
-          <li>⬛ <strong>Gris</strong>: la letra no aparece en la palabra.</li>
-          <li>🎯 Usa las pistas acumuladas para afinar tu siguiente intento.</li>
-          <li>📅 Hay una palabra nueva cada día para todos los jugadores.</li>
-        </ul>
-      `,
+    <p>Un juego de preguntas al estilo Kahoot. Compite en equipo según tu ficha respondiendo preguntas de opción múltiple antes de que se acabe el tiempo. ¡La velocidad importa!</p>
+    <ul>
+      <li>🎮 El administrador crea la sala y comparte un <strong>PIN único</strong> para unirse.</li>
+      <li>🔑 Ingresa el PIN, escoge tu <strong>nombre de usuario</strong> y selecciona la <strong>ficha</strong> a la que perteneces.</li>
+      <li>❓ Se mostrará una pregunta con varias opciones de respuesta.</li>
+      <li>⚡ <strong>Responde lo más rápido posible</strong>: entre más rápido respondas, más puntos obtienes.</li>
+      <li>✅ Solo las respuestas correctas suman puntos, la velocidad define cuántos.</li>
+      <li>❌ Una respuesta incorrecta no suma puntos, sin importar la velocidad.</li>
+      <li>🏆 Al final, el jugador con más puntos acumulados gana la partida.</li>
+    </ul>
+  `,
       difficulty: 3,
-      players: "1 jugador",
+      players: "Multijugador",
       team: [
         {
-          initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
+          initials: "CR",
+          name: "Cesar Augusto Rodas",
+          role: "Integrante",
           photo: "",
         },
         {
-          initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
-          photo: "",
-        },
-        {
-          initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          initials: "MH",
+          name: "Mateo Hoyos",
+          role: "Integrante",
           photo: "",
         },
       ],

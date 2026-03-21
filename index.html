@@ -328,7 +328,7 @@
               </div>
             </div>
 
-            <!-- 05 · ADIVINA LA PALABRA -->
+            <!-- 05 · Y esa pregunta? -->
             <div
               class="game-card"
               style="
@@ -339,7 +339,7 @@
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">05</div>
-                <span class="game-emoji">🔤</span>
+                <span class="game-emoji">🤔❓</span>
                 <div class="card-stripe"></div>
               </div>
               <div class="card-body">
@@ -347,11 +347,12 @@
                   <span class="tag tag-php">PHP</span>
                   <span class="tag tag-js">JS</span>
                   <span class="tag tag-css">CSS</span>
+                  <span class="tag tag-sql">SQL</span>
                 </div>
-                <div class="card-title">Adivina la Palabra</div>
+                <div class="card-title">Y esa pregunta?</div>
                 <div class="card-desc">
-                  Al estilo Wordle: tienes 6 intentos para adivinar la palabra.
-                  Las pistas de colores te guían.
+                  Responde preguntas contra el reloj. Más rápido respondes, más
+                  puntos ganas.
                 </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
@@ -363,13 +364,13 @@
                       <div class="dot"></div>
                     </div>
                   </div>
-                  <div class="card-players">👤 1 jugador</div>
+                  <div class="card-players">👤 Multijugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
                 <a
-                  href="#"
+                  href="https://yesapregunta.proyectosadso.com/"
                   class="btn-play-card"
                   onclick="event.stopPropagation()"
                   >▶ Jugar</a
@@ -451,56 +452,14 @@
           </p>
         </div>
         <div class="instructors-grid">
-          <!-- INSTRUCTOR 01 -->
-          <div class="instructor-card">
-            <div class="instructor-card-inner">
-              <div class="inst-number">01</div>
-              <div class="inst-photo-wrap">
-                <div class="inst-photo-frame">
-                  <img
-                    src="foto-instructor-1.jpg"
-                    alt="Instructor 1"
-                    class="inst-photo"
-                  />
-                  <div class="inst-photo-placeholder">
-                    <span class="inst-initials">IN</span>
-                  </div>
-                </div>
-                <div class="inst-scan-line"></div>
-                <div class="inst-corner tl"></div>
-                <div class="inst-corner tr"></div>
-                <div class="inst-corner bl"></div>
-                <div class="inst-corner br"></div>
-              </div>
-              <div class="inst-info">
-                <div class="inst-badge">
-                  <span class="badge-dot" style="--dot-color: #ffd700"></span
-                  >Instructor
-                </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Desarrollo Web</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
-                <div class="inst-tags">
-                  <span class="inst-tag">PHP</span>
-                  <span class="inst-tag">SQL</span>
-                  <span class="inst-tag">Backend</span>
-                </div>
-              </div>
-            </div>
-            <div class="inst-glow" style="--inst-color: #ffd700"></div>
-          </div>
-
           <!-- INSTRUCTOR 02 -->
-          <div class="instructor-card featured">
+          <div class="instructor-card">
             <div class="instructor-card-inner">
               <div class="inst-number">02</div>
               <div class="inst-photo-wrap">
                 <div class="inst-photo-frame">
                   <img
-                    src="foto-instructor-2.jpg"
+                    src="foto-instructor-1.jpg"
                     alt="Instructor 2"
                     class="inst-photo"
                   />
@@ -516,18 +475,51 @@
               </div>
               <div class="inst-info">
                 <div class="inst-badge">
-                  <span class="badge-dot" style="--dot-color: #00f5ff"></span
-                  >Instructor
+                  <span class="badge-dot" style="--dot-color: #ffd700"></span
+                  >Bibliotecaria
                 </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Interfaces y UX</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
+                <h3 class="inst-name">Vanessa</h3>
+                <p class="inst-role">Bibliotecaria</p>
                 <div class="inst-tags">
-                  <span class="inst-tag">CSS3</span>
-                  <span class="inst-tag">JavaScript</span>
+                  <span class="inst-tag">Diseño</span>
+                  <span class="inst-tag">Supervision</span>
+                </div>
+              </div>
+            </div>
+            <div class="inst-glow" style="--inst-color: #ffd700"></div>
+          </div>
+
+          <!-- INSTRUCTOR 01 -->
+          <div class="instructor-card featured">
+            <div class="instructor-card-inner">
+              <div class="inst-number">01</div>
+              <div class="inst-photo-wrap">
+                <div class="inst-photo-frame">
+                  <img
+                    src="foto-instructor-2.jpg"
+                    alt="Instructor 1"
+                    class="inst-photo"
+                  />
+                  <div class="inst-photo-placeholder">
+                    <span class="inst-initials">IN</span>
+                  </div>
+                </div>
+                <div class="inst-scan-line"></div>
+                <div class="inst-corner tl"></div>
+                <div class="inst-corner tr"></div>
+                <div class="inst-corner bl"></div>
+                <div class="inst-corner br"></div>
+              </div>
+              <div class="inst-info">
+                <div class="inst-badge">
+                  <span class="badge-dot" style="--dot-color: #00f5ff"></span
+                  >Instructor Lider
+                </div>
+                <h3 class="inst-name">Juan Camilo Vanegas</h3>
+                <p class="inst-role">Backend</p>
+                <div class="inst-tags">
+                  <span class="inst-tag">PHP</span>
+                  <span class="inst-tag">MySQL/SQL</span>
                   <span class="inst-tag">UX/UI</span>
                 </div>
               </div>
@@ -561,16 +553,12 @@
                   <span class="badge-dot" style="--dot-color: #ff00a0"></span
                   >Instructor
                 </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Bases de Datos</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
+                <h3 class="inst-name">Walter Arias</h3>
+                <p class="inst-role">Frontend</p>
                 <div class="inst-tags">
-                  <span class="inst-tag">MySQL</span>
-                  <span class="inst-tag">SQL</span>
-                  <span class="inst-tag">Modelado</span>
+                  <span class="inst-tag">JavaScript</span>
+                  <span class="inst-tag">HTML5</span>
+                  <span class="inst-tag">CSS3</span>
                 </div>
               </div>
             </div>
@@ -683,25 +671,9 @@
                 </div>
               </div>
               <div class="footer-inst">
-                <div class="footer-inst-badge">
-                  <div class="footer-inst-dot"></div>
-                  Formación oficial
-                </div>
                 <div class="footer-inst-name">
                   Centro de Tecnologías<br />
                   <span>Agroindustriales — CTA</span>
-                </div>
-                <div class="footer-inst-rows">
-                  <div class="footer-inst-row">
-                    <span class="footer-inst-key">Programa</span>
-                    <span class="footer-inst-val"
-                      >Análisis y Desarrollo de Software</span
-                    >
-                  </div>
-                  <div class="footer-inst-row">
-                    <span class="footer-inst-key">Ficha</span>
-                    <span class="footer-inst-val cyan">3064749</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -724,7 +696,7 @@
             <span class="footer-game-name">Bingo Literario</span>
             <span class="footer-mid-sep">·</span>
             <div class="footer-game-dot" style="--c: #7c3aed"></div>
-            <span class="footer-game-name">Adivina la Palabra</span>
+            <span class="footer-game-name">Y esa pregunta?</span>
             <span class="footer-mid-sep">·</span>
             <div class="footer-game-dot" style="--c: #10b981"></div>
             <span class="footer-game-name">Memory Cards</span>
