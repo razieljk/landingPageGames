@@ -262,7 +262,7 @@
         },
         {
           initials: "MH",
-          name: "Mateo Hoyos",
+          name: "Mateo Hoyos Hernandez",
           role: "Integrante",
           photo: "",
         },
