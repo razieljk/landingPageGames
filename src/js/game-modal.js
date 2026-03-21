@@ -271,43 +271,61 @@
     {
       id: 6,
       number: "06",
-      title: "Memory Cards",
+      title: "CardMatch",
       emoji: "🃏",
       accent: "#10B981",
       accentBg: "rgba(16,185,129,0.10)",
       tags: ["JS", "CSS", "PHP"],
-      shortDesc: "Voltea cartas y encuentra los pares iguales.",
+      shortDesc: "Encuentra pares de cartas y mejora tu memoria.",
       howToPlay: `
         <p>El clásico juego de memoria con un toque moderno. Pon a prueba tu capacidad de recordar la posición de las cartas.</p>
         <ul>
-          <li>🎴 Se presenta una cuadrícula de cartas boca abajo.</li>
-          <li>👆 Haz clic en dos cartas para voltearlas.</li>
-          <li>✅ Si las dos cartas son iguales, permanecen visibles y suman puntos.</li>
-          <li>❌ Si son distintas, se vuelven a ocultar — ¡recuerda sus posiciones!</li>
-          <li>⏱️ El cronómetro mide cuánto tardas en completar todos los pares.</li>
-          <li>🏆 Tu mejor tiempo se guarda en el servidor y aparece en el ranking.</li>
-          <li>📐 Niveles de dificultad: cuadrícula 4×4, 6×6 u 8×8.</li>
-        </ul>
+  <li>🎴 Se muestra una cuadrícula de cartas boca abajo.</li>
+  <li>👆 El jugador debe seleccionar dos cartas para voltearlas.</li>
+  <li>✅ Si las cartas son iguales, permanecen visibles y el jugador gana <strong>20 puntos</strong>.</li>
+  <li>❌ Si no coinciden, se vuelven a ocultar y el jugador pierde <strong>5 puntos</strong>.</li>
+  <li>🎯 El objetivo es encontrar todas las parejas con la mayor cantidad de puntos posible.</li>
+  <li>📊 Se registran los movimientos, las parejas encontradas y el puntaje obtenido.</li>
+</ul>
+
+<div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.6rem;">
+
+  <div style="display:flex; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#10B981); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron'; font-size:0.6rem; color:var(--m-accent,#10B981); font-weight:700;">ADMINISTRADOR</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
+      Gestiona los mazos de cartas, crea nuevos, edita su información y agrega o elimina cartas. 
+      También puede administrar jugadores y consultar estadísticas generales del sistema.
+    </span>
+  </div>
+
+  <div style="display:flex; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron'; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700;">JUGADOR</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
+      Inicia sesión, selecciona un mazo y una dificultad, juega para obtener puntos y puede consultar sus estadísticas, ranking y partidas realizadas.
+    </span>
+  </div>
+
+</div>
       `,
-      difficulty: 1,
+      difficulty: 2,
       players: "1 jugador",
       team: [
         {
           initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
+          name: "Jerson Estiven Bedoya",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
           initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
+          name: "Cristoffer Arley Jaramillo",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
           initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          name: "Diego Fernando Aponte",
+          role: "Integrante del equipo",
           photo: "",
         },
       ],
