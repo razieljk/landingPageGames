@@ -68,11 +68,105 @@ nav {
   background: var(--gold);
   color: var(--dark);
 }
+/* hamburguesa — oculta en desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
 
-@media (max-width: 700px) {
+/* X cuando está abierto */
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ——— RESPONSIVE ——— */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+    gap: 0;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    order: 2;
+  }
+
+  .nav-sena {
+    order: 3;
+  }
+
+  .nav-logo {
+    order: 1;
+    flex: 1;
+  }
+
+  /* menú oculto por defecto en móvil */
   .nav-links {
     display: none;
+    order: 4;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid rgba(0, 245, 255, 0.1);
+    margin-top: 0.75rem;
   }
+
+  /* menú visible cuando tiene clase .open */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.78rem;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  /* pastilla SENA más compacta */
+  .nav-sena-text {
+    display: none;
+  }
+
+  .nav-sena {
+    padding: 0.4rem;
+    border-radius: 50%;
+  }
+
+  
 }
 
 .nav-sena {

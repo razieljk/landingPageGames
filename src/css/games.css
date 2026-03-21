@@ -374,9 +374,9 @@
   .games-grid { padding: 1rem 1.5rem 2rem; }
   .game-card  { width: 300px; }
 }
-/* ============================================
-   BOTONES CARD — Ver info + Jugar
-   ============================================ */
+
+/* REEMPLAZA COMPLETAMENTE tu bloque de .btn-info, .btn-play-card por esto: */
+
 .card-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -386,13 +386,23 @@
 }
 
 .btn-info, .btn-play-card {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   padding: 10px 0;
-  font-family: 'Exo 2', sans-serif; font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.25s; border-radius: 6px;
-  clip-path: polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+  border-radius: 6px;
   text-decoration: none;
+  /* sin clip-path */
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn-info {
@@ -400,7 +410,10 @@
   border: 1px solid var(--card-accent, var(--gold));
   color: var(--card-accent, var(--gold));
 }
-.btn-info:hover { background: var(--card-accent, var(--gold)); color: #05020F; }
+.btn-info:hover {
+  background: var(--card-accent, var(--gold));
+  color: #05020F;
+}
 
 .btn-play-card {
   background: var(--card-accent, var(--gold));
@@ -408,4 +421,16 @@
   color: #05020F;
   font-weight: 800;
 }
-.btn-play-card:hover { filter: brightness(1.18); transform: translateY(-2px); }
+.btn-play-card:hover {
+  filter: brightness(1.18);
+  transform: translateY(-2px);
+}
+
+/* asegura estilos en móvil */
+@media (max-width: 768px) {
+  .btn-info, .btn-play-card {
+    font-size: 0.65rem;
+    padding: 9px 0;
+    letter-spacing: 1px;
+  }
+}

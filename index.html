@@ -36,11 +36,19 @@
 
     <nav>
       <div class="nav-logo">GAME<span>ZONE</span></div>
-      <ul class="nav-links">
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="#juegos">Juegos</a></li>
         <li><a href="#instructores">Instructores</a></li>
         <li><a href="#tech">Tecnología</a></li>
       </ul>
+
       <div class="nav-sena">
         <div class="nav-sena-icon">
           <img src="src/img/logoSena.png" width="16" alt="SENA" />
@@ -111,7 +119,7 @@
       </div>
 
       <!-- JUEGOS -->
-     <!-- JUEGOS -->
+      <!-- JUEGOS -->
       <section class="section-games" id="juegos">
         <div class="section-header">
           <span class="section-label">// selecciona y juega</span>
@@ -122,9 +130,14 @@
           <div class="fade-left"></div>
           <div class="fade-right"></div>
           <div class="games-grid" id="gamesTrack">
-
             <!-- 01 · CRUCIGRAMA -->
-            <div class="game-card" style="--card-accent:#ffd700;--card-accent-bg:rgba(255,215,0,0.08);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ffd700;
+                --card-accent-bg: rgba(255, 215, 0, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">01</div>
@@ -138,23 +151,42 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">Crucigrama</div>
-                <div class="card-desc">Completa el crucigrama con palabras temáticas. Las palabras se guardan en base de datos y cambian cada día.</div>
+                <div class="card-desc">
+                  Completa el crucigrama con palabras temáticas. Las palabras se
+                  guardan en base de datos y cambian cada día.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 02 · QUIÉN QUIERE SER MILLONARIO -->
-            <div class="game-card" style="--card-accent:#ff9f00;--card-accent-bg:rgba(255,159,0,0.1);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ff9f00;
+                --card-accent-bg: rgba(255, 159, 0, 0.1);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">02</div>
@@ -169,23 +201,42 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">¿Quién Quiere Ser Millonario?</div>
-                <div class="card-desc">15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás al millón de puntos?</div>
+                <div class="card-desc">
+                  15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás
+                  al millón de puntos?
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 03 · EL AHORCADO -->
-            <div class="game-card" style="--card-accent:#ff00a0;--card-accent-bg:rgba(255,0,160,0.08);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ff00a0;
+                --card-accent-bg: rgba(255, 0, 160, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">03</div>
@@ -199,23 +250,42 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">El Ahorcado</div>
-                <div class="card-desc">Adivina la palabra letra por letra antes de que se acaben los intentos. Palabras aleatorias desde la base de datos.</div>
+                <div class="card-desc">
+                  Adivina la palabra letra por letra antes de que se acaben los
+                  intentos. Palabras aleatorias desde la base de datos.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 04 · BINGO LITERARIO -->
-            <div class="game-card" style="--card-accent:#00f5ff;--card-accent-bg:rgba(0,245,255,0.07);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #00f5ff;
+                --card-accent-bg: rgba(0, 245, 255, 0.07);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">04</div>
@@ -229,23 +299,43 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">Bingo Literario</div>
-                <div class="card-desc">Responde preguntas de cultura general contra el reloj. Compite por el top del ranking global.</div>
+                <div class="card-desc">
+                  Responde preguntas de cultura general contra el reloj. Compite
+                  por el top del ranking global.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👥 Ranking global</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a target="_blank" href="https://bingoliterario.proyectosadso.com/views/login_admin.php" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  target="_blank"
+                  href="https://bingoliterario.proyectosadso.com/views/login_admin.php"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 05 · ADIVINA LA PALABRA -->
-            <div class="game-card" style="--card-accent:#7c3aed;--card-accent-bg:rgba(124,58,237,0.1);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #7c3aed;
+                --card-accent-bg: rgba(124, 58, 237, 0.1);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">05</div>
@@ -259,23 +349,42 @@
                   <span class="tag tag-css">CSS</span>
                 </div>
                 <div class="card-title">Adivina la Palabra</div>
-                <div class="card-desc">Al estilo Wordle: tienes 6 intentos para adivinar la palabra. Las pistas de colores te guían.</div>
+                <div class="card-desc">
+                  Al estilo Wordle: tienes 6 intentos para adivinar la palabra.
+                  Las pistas de colores te guían.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 06 · MEMORY CARDS -->
-            <div class="game-card" style="--card-accent:#10b981;--card-accent-bg:rgba(16,185,129,0.08);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #10b981;
+                --card-accent-bg: rgba(16, 185, 129, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">06</div>
@@ -289,23 +398,37 @@
                   <span class="tag tag-php">PHP</span>
                 </div>
                 <div class="card-title">Memory Cards</div>
-                <div class="card-desc">Voltea cartas y encuentra los pares iguales. Guarda tu récord de tiempo en el servidor.</div>
+                <div class="card-desc">
+                  Voltea cartas y encuentra los pares iguales. Guarda tu récord
+                  de tiempo en el servidor.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
                 <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
-
-          </div><!-- end games-grid -->
-        </div><!-- end games-scroll-wrap -->
+          </div>
+          <!-- end games-grid -->
+        </div>
+        <!-- end games-scroll-wrap -->
 
         <div class="games-progress-wrap">
           <span class="games-progress-label" id="gamesLabel">01 / 06</span>
@@ -616,5 +739,6 @@
     <script src="src/js/particles.js"></script>
     <script src="src/js/games-scroll.js"></script>
     <script src="src/js/game-modal.js"></script>
+    <script src="src/js/nav-bar.js"></script>
   </body>
 </html>
