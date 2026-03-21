@@ -991,9 +991,9 @@
         <!-- TEAM -->
         <div class="gz-section-label">equipo desarrollador</div>
         <div class="gz-section-title">Quiénes lo Construyeron</div>
-        <div class="gz-team-grid">
-          ${game.team.map(buildMemberCard).join("")}
-        </div>
+        <div class="gz-team-grid" style="grid-template-columns: repeat(${game.team.length}, minmax(0, 220px)); justify-content: center;">
+  ${game.team.map(buildMemberCard).join("")}
+</div>
 
       </div><!-- end body -->
 
