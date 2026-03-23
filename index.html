@@ -36,11 +36,19 @@
 
     <nav>
       <div class="nav-logo">GAME<span>ZONE</span></div>
-      <ul class="nav-links">
+
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="#juegos">Juegos</a></li>
         <li><a href="#instructores">Instructores</a></li>
         <li><a href="#tech">Tecnología</a></li>
       </ul>
+
       <div class="nav-sena">
         <div class="nav-sena-icon">
           <img src="src/img/logoSena.png" width="16" alt="SENA" />
@@ -65,8 +73,10 @@
           <span class="title-line3">REINVENTADOS</span>
         </h1>
         <p class="hero-sub">
-          Una colección de juegos de siempre, construidos desde cero con PHP,
-          JavaScript, CSS y SQL. Diseñados para divertir, desafiar y sorprender.
+          Una colección de juegos de siempre, realizados en el Centro de
+          Tecnologías Agroindustriales por la ficha 3064749 de Análisis y
+          Desarrollo de Software. Diseñados para divertir, desafiar y
+          sorprender.
         </p>
         <div class="hero-cta">
           <a href="#juegos" class="btn-primary">▶ Explorar Juegos</a>
@@ -110,7 +120,11 @@
         </div>
       </div>
 
+<<<<<<< HEAD
      <!-- JUEGOS -->
+=======
+      <!-- JUEGOS -->
+>>>>>>> a0196f828479493f026e58ed36ed7009a0fb59d8
       <section class="section-games" id="juegos">
         <div class="section-header">
           <span class="section-label">// selecciona y juega</span>
@@ -120,10 +134,29 @@
         <div class="games-scroll-wrap">
           <div class="fade-left"></div>
           <div class="fade-right"></div>
+          <button
+            class="games-arrow games-arrow-left"
+            id="gamesArrowLeft"
+            aria-label="Anterior"
+          >
+            &#8592;
+          </button>
+          <button
+            class="games-arrow games-arrow-right"
+            id="gamesArrowRight"
+            aria-label="Siguiente"
+          >
+            &#8594;
+          </button>
           <div class="games-grid" id="gamesTrack">
-
             <!-- 01 · CRUCIGRAMA -->
-            <div class="game-card" style="--card-accent:#ffd700;--card-accent-bg:rgba(255,215,0,0.08);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ffd700;
+                --card-accent-bg: rgba(255, 215, 0, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">01</div>
@@ -137,23 +170,42 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">Crucigrama</div>
-                <div class="card-desc">Completa el crucigrama con palabras temáticas. Las palabras se guardan en base de datos y cambian cada día.</div>
+                <div class="card-desc">
+                  Completa el crucigrama con palabras temáticas. Las palabras se
+                  guardan en base de datos y cambian cada día.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 02 · QUIÉN QUIERE SER MILLONARIO -->
-            <div class="game-card" style="--card-accent:#ff9f00;--card-accent-bg:rgba(255,159,0,0.1);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ff9f00;
+                --card-accent-bg: rgba(255, 159, 0, 0.1);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">02</div>
@@ -168,23 +220,42 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">¿Quién Quiere Ser Millonario?</div>
-                <div class="card-desc">15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás al millón de puntos?</div>
+                <div class="card-desc">
+                  15 preguntas, 4 comodines y la presión del tiempo. ¿Llegarás
+                  al millón de puntos?
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 03 · EL AHORCADO -->
-            <div class="game-card" style="--card-accent:#ff00a0;--card-accent-bg:rgba(255,0,160,0.08);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #ff00a0;
+                --card-accent-bg: rgba(255, 0, 160, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">03</div>
@@ -198,27 +269,46 @@
                   <span class="tag tag-sql">SQL</span>
                 </div>
                 <div class="card-title">El Ahorcado</div>
-                <div class="card-desc">Adivina la palabra letra por letra antes de que se acaben los intentos. Palabras aleatorias desde la base de datos.</div>
+                <div class="card-desc">
+                  Adivina la palabra letra por letra antes de que se acaben los
+                  intentos. Palabras aleatorias desde la base de datos.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  href="https://ahorcadosena.proyectosadso.com/login.php"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
             <!-- 04 · BINGO LITERARIO -->
-            <div class="game-card" style="--card-accent:#00f5ff;--card-accent-bg:rgba(0,245,255,0.07);">
+            <div
+              class="game-card"
+              style="
+                --card-accent: #00f5ff;
+                --card-accent-bg: rgba(0, 245, 255, 0.07);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">04</div>
-                <span class="game-emoji">🧠</span>
+                <span class="game-emoji">📚</span>
                 <div class="card-stripe"></div>
               </div>
               <div class="card-body">
@@ -227,28 +317,47 @@
                   <span class="tag tag-js">JS</span>
                   <span class="tag tag-sql">SQL</span>
                 </div>
-                <div class="card-title">Bingo Literario</div>
-                <div class="card-desc">Responde preguntas de cultura general contra el reloj. Compite por el top del ranking global.</div>
+                <div class="card-title">EduBingo</div>
+                <div class="card-desc">
+                 Bingo educativo en tiempo real donde cada casilla esconde un título, autor o frase literaria. Marca tu tabla antes que los demás y demuestra tu cultura literaria.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
-                  <div class="card-players">👥 Ranking global</div>
+                  <div class="card-players">👥 Multijugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="https://bingoliterario.proyectosadso.com/views/login_admin.php" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  target="_blank"
+                  href="https://bingoliterario.proyectosadso.com/views/login_admin.php"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
-            <!-- 05 · ADIVINA LA PALABRA -->
-            <div class="game-card" style="--card-accent:#7c3aed;--card-accent-bg:rgba(124,58,237,0.1);">
+            <!-- 05 · Y esa pregunta? -->
+            <div
+              class="game-card"
+              style="
+                --card-accent: #7c3aed;
+                --card-accent-bg: rgba(124, 58, 237, 0.1);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">05</div>
-                <span class="game-emoji">🔤</span>
+                <span class="game-emoji">🤔❓</span>
                 <div class="card-stripe"></div>
               </div>
               <div class="card-body">
@@ -256,25 +365,45 @@
                   <span class="tag tag-php">PHP</span>
                   <span class="tag tag-js">JS</span>
                   <span class="tag tag-css">CSS</span>
+                  <span class="tag tag-sql">SQL</span>
                 </div>
-                <div class="card-title">Adivina la Palabra</div>
-                <div class="card-desc">Al estilo Wordle: tienes 6 intentos para adivinar la palabra. Las pistas de colores te guían.</div>
+                <div class="card-title">Y esa pregunta?</div>
+                <div class="card-desc">
+                  Responde preguntas contra el reloj. Más rápido respondes, más
+                  puntos ganas.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
-                  <div class="card-players">👤 1 jugador</div>
+                  <div class="card-players">👥 Multijugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  href="https://yesapregunta.proyectosadso.com/"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
 
-            <!-- 06 · MEMORY CARDS -->
-            <div class="game-card" style="--card-accent:#10b981;--card-accent-bg:rgba(16,185,129,0.08);">
+            <!-- 06 · CardMatch -->
+            <div
+              class="game-card"
+              style="
+                --card-accent: #10b981;
+                --card-accent-bg: rgba(16, 185, 129, 0.08);
+              "
+            >
               <div class="card-glow"></div>
               <div class="card-img-wrap">
                 <div class="card-number">06</div>
@@ -287,24 +416,39 @@
                   <span class="tag tag-css">CSS</span>
                   <span class="tag tag-php">PHP</span>
                 </div>
-                <div class="card-title">Memory Cards</div>
-                <div class="card-desc">Voltea cartas y encuentra los pares iguales. Guarda tu récord de tiempo en el servidor.</div>
+                <div class="card-title">CardMatch</div>
+                <div class="card-desc">
+                  Juego de memoria donde debes encontrar pares de cartas
+                  iguales. Mejora tu concentración y acumula puntos mientras
+                  juegas.
+                </div>
                 <div class="card-footer-bar">
                   <div class="card-difficulty">
                     <span>Dificultad</span>
-                    <div class="dots"><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                    <div class="dots">
+                      <div class="dot on"></div>
+                      <div class="dot on"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
                   </div>
                   <div class="card-players">👤 1 jugador</div>
                 </div>
               </div>
               <div class="card-actions">
-                <button class="btn-info">👥 Ver info</button>
-                <a href="#" class="btn-play-card" onclick="event.stopPropagation()">▶ Jugar</a>
+                <button class="btn-info">🔍 Ver info</button>
+                <a
+                  href="#"
+                  class="btn-play-card"
+                  onclick="event.stopPropagation()"
+                  >▶ Jugar</a
+                >
               </div>
             </div>
-
-          </div><!-- end games-grid -->
-        </div><!-- end games-scroll-wrap -->
+          </div>
+          <!-- end games-grid -->
+        </div>
+        <!-- end games-scroll-wrap -->
 
         <div class="games-progress-wrap">
           <span class="games-progress-label" id="gamesLabel">01 / 06</span>
@@ -314,19 +458,6 @@
           <span class="games-progress-label">GAMEZONE</span>
         </div>
       </section>
-
-      <!-- DIVISOR -->
-      <div class="section-divider-instructors">
-        <div class="div-line"></div>
-        <div class="div-center">
-          <div class="div-diamond sm"></div>
-          <div class="div-diamond"></div>
-          &nbsp;DOCENTES&nbsp;
-          <div class="div-diamond"></div>
-          <div class="div-diamond sm"></div>
-        </div>
-        <div class="div-line right"></div>
-      </div>
 
       <!-- INSTRUCTORES -->
       <section class="section-instructors" id="instructores">
@@ -340,56 +471,14 @@
           </p>
         </div>
         <div class="instructors-grid">
-          <!-- INSTRUCTOR 01 -->
-          <div class="instructor-card">
-            <div class="instructor-card-inner">
-              <div class="inst-number">01</div>
-              <div class="inst-photo-wrap">
-                <div class="inst-photo-frame">
-                  <img
-                    src="foto-instructor-1.jpg"
-                    alt="Instructor 1"
-                    class="inst-photo"
-                  />
-                  <div class="inst-photo-placeholder">
-                    <span class="inst-initials">IN</span>
-                  </div>
-                </div>
-                <div class="inst-scan-line"></div>
-                <div class="inst-corner tl"></div>
-                <div class="inst-corner tr"></div>
-                <div class="inst-corner bl"></div>
-                <div class="inst-corner br"></div>
-              </div>
-              <div class="inst-info">
-                <div class="inst-badge">
-                  <span class="badge-dot" style="--dot-color: #ffd700"></span
-                  >Instructor
-                </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Desarrollo Web</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
-                <div class="inst-tags">
-                  <span class="inst-tag">PHP</span>
-                  <span class="inst-tag">SQL</span>
-                  <span class="inst-tag">Backend</span>
-                </div>
-              </div>
-            </div>
-            <div class="inst-glow" style="--inst-color: #ffd700"></div>
-          </div>
-
           <!-- INSTRUCTOR 02 -->
-          <div class="instructor-card featured">
+          <div class="instructor-card">
             <div class="instructor-card-inner">
               <div class="inst-number">02</div>
               <div class="inst-photo-wrap">
                 <div class="inst-photo-frame">
                   <img
-                    src="foto-instructor-2.jpg"
+                    src="foto-instructor-1.jpg"
                     alt="Instructor 2"
                     class="inst-photo"
                   />
@@ -405,18 +494,51 @@
               </div>
               <div class="inst-info">
                 <div class="inst-badge">
-                  <span class="badge-dot" style="--dot-color: #00f5ff"></span
-                  >Instructor
+                  <span class="badge-dot" style="--dot-color: #ffd700"></span
+                  >Bibliotecaria
                 </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Interfaces y UX</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
+                <h3 class="inst-name">Vanessa Murillo Mosquera</h3>
+                <p class="inst-role">Bibliotecaria</p>
                 <div class="inst-tags">
-                  <span class="inst-tag">CSS3</span>
-                  <span class="inst-tag">JavaScript</span>
+                  <span class="inst-tag">Diseño</span>
+                  <span class="inst-tag">Supervision</span>
+                </div>
+              </div>
+            </div>
+            <div class="inst-glow" style="--inst-color: #ffd700"></div>
+          </div>
+
+          <!-- INSTRUCTOR 01 -->
+          <div class="instructor-card featured">
+            <div class="instructor-card-inner">
+              <div class="inst-number">01</div>
+              <div class="inst-photo-wrap">
+                <div class="inst-photo-frame">
+                  <img
+                    src="foto-instructor-2.jpg"
+                    alt="Instructor 1"
+                    class="inst-photo"
+                  />
+                  <div class="inst-photo-placeholder">
+                    <span class="inst-initials">IN</span>
+                  </div>
+                </div>
+                <div class="inst-scan-line"></div>
+                <div class="inst-corner tl"></div>
+                <div class="inst-corner tr"></div>
+                <div class="inst-corner bl"></div>
+                <div class="inst-corner br"></div>
+              </div>
+              <div class="inst-info">
+                <div class="inst-badge">
+                  <span class="badge-dot" style="--dot-color: #00f5ff"></span
+                  >Instructor Lider
+                </div>
+                <h3 class="inst-name">Juan Camilo Vanegas</h3>
+                <p class="inst-role">Backend</p>
+                <div class="inst-tags">
+                  <span class="inst-tag">PHP</span>
+                  <span class="inst-tag">MySQL/SQL</span>
                   <span class="inst-tag">UX/UI</span>
                 </div>
               </div>
@@ -448,18 +570,14 @@
               <div class="inst-info">
                 <div class="inst-badge">
                   <span class="badge-dot" style="--dot-color: #ff00a0"></span
-                  >Instructor
+                  >Instructor ADSO
                 </div>
-                <h3 class="inst-name">Nombre del Instructor</h3>
-                <p class="inst-role">Docente de Bases de Datos</p>
-                <p class="inst-desc">
-                  Descripción breve del instructor, su área de expertise y su
-                  aporte al proyecto.
-                </p>
+                <h3 class="inst-name">Walter Arias</h3>
+                <p class="inst-role">Frontend</p>
                 <div class="inst-tags">
-                  <span class="inst-tag">MySQL</span>
-                  <span class="inst-tag">SQL</span>
-                  <span class="inst-tag">Modelado</span>
+                  <span class="inst-tag">HTML5</span>
+                  <span class="inst-tag">CSS3</span>
+                  <span class="inst-tag">JavaScript</span>
                 </div>
               </div>
             </div>
@@ -572,25 +690,9 @@
                 </div>
               </div>
               <div class="footer-inst">
-                <div class="footer-inst-badge">
-                  <div class="footer-inst-dot"></div>
-                  Formación oficial
-                </div>
                 <div class="footer-inst-name">
                   Centro de Tecnologías<br />
                   <span>Agroindustriales — CTA</span>
-                </div>
-                <div class="footer-inst-rows">
-                  <div class="footer-inst-row">
-                    <span class="footer-inst-key">Programa</span>
-                    <span class="footer-inst-val"
-                      >Análisis y Desarrollo de Software</span
-                    >
-                  </div>
-                  <div class="footer-inst-row">
-                    <span class="footer-inst-key">Ficha</span>
-                    <span class="footer-inst-val cyan">3064749</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -613,7 +715,7 @@
             <span class="footer-game-name">Bingo Literario</span>
             <span class="footer-mid-sep">·</span>
             <div class="footer-game-dot" style="--c: #7c3aed"></div>
-            <span class="footer-game-name">Adivina la Palabra</span>
+            <span class="footer-game-name">Y esa pregunta?</span>
             <span class="footer-mid-sep">·</span>
             <div class="footer-game-dot" style="--c: #10b981"></div>
             <span class="footer-game-name">Memory Cards</span>
@@ -628,5 +730,6 @@
     <script src="src/js/particles.js"></script>
     <script src="src/js/games-scroll.js"></script>
     <script src="src/js/game-modal.js"></script>
+    <script src="src/js/nav-bar.js"></script>
   </body>
 </html>

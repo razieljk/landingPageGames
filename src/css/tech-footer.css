@@ -129,11 +129,18 @@ footer {
 }
 
 .footer-vdiv {
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.13) 50%, rgba(255,255,255,0.1) 75%, transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.13) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent
+  );
   width: 1px;
   align-self: stretch;
   min-height: 160px;
-  margin: 0;        /* ← quita el margin anterior */
+  margin: 0; /* ← quita el margin anterior */
 }
 
 .footer-col2 {
@@ -141,23 +148,22 @@ footer {
   flex-direction: column;
   gap: 0.5rem;
   padding-left: 2.5rem;
-  padding-right: 2.5rem;  /* ← agrega esto */
+  padding-right: 2.5rem; /* ← agrega esto */
 }
 
 .footer-col3 {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  padding-left: 2.5rem;   /* ← mismo tratamiento */
+  padding-left: 2.5rem; /* ← mismo tratamiento */
 }
-
 
 /* col 1 */
 .footer-col1 {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  padding-right: 2.5rem;  /* ← agrega esto */
+  padding-right: 2.5rem; /* ← agrega esto */
 }
 .footer-logo {
   font-family: "Orbitron", sans-serif;
@@ -234,7 +240,6 @@ footer {
   text-transform: uppercase;
   margin-bottom: 0.6rem;
   padding-bottom: 0.6rem;
-  
 }
 .footer-link {
   font-family: "Orbitron", sans-serif;
@@ -511,4 +516,126 @@ footer {
   height: 4px;
   border-radius: 50%;
   background: rgba(0, 245, 255, 0.4);
+}
+
+/* ============================================
+   FOOTER RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .footer-body {
+    grid-template-columns: 1fr 1px 1fr;
+    grid-template-rows: auto auto;
+    padding: 2.5rem 2rem 2rem;
+  }
+
+  /* oculta el segundo divisor y col3 se baja */
+  .footer-vdiv:last-of-type {
+    display: none;
+  }
+
+  .footer-col3 {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-col2 {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  /* una sola columna, sin divisores */
+  .footer-body {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 1.5rem;
+    gap: 0;
+  }
+
+  .footer-vdiv {
+    display: none;
+  }
+
+  /* cada col separada por borde */
+  .footer-col1 {
+    padding-right: 0;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-col2 {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-col3 {
+    padding-left: 0;
+    padding-top: 1.8rem;
+    border-top: none;
+    margin-top: 0;
+    grid-column: auto;
+  }
+
+  /* logo más pequeño */
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+
+  /* descripción sin max-width */
+  .footer-desc {
+    max-width: 100%;
+  }
+
+  /* chips más compactos */
+  .footer-chips {
+    gap: 0.3rem;
+  }
+
+  /* stats en fila centrada */
+  .footer-stats {
+    gap: 1.2rem;
+  }
+
+  /* bloque SENA apilado verticalmente */
+  .footer-sena-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  /* logo SENA centrado */
+  .footer-sena-wrap {
+    align-self: center;
+  }
+
+  /* info institucional centrada */
+  .footer-inst {
+    width: 100%;
+  }
+
+  /* franja media apilada */
+  .footer-mid {
+    margin: 0 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .footer-mid-games {
+    gap: 0.4rem;
+  }
+
+  /* franja inferior apilada */
+  .footer-bottom {
+    padding: 0.9rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 }
