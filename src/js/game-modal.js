@@ -278,31 +278,34 @@
       tags: ["JS", "CSS", "PHP"],
       shortDesc: "Encuentra pares de cartas y mejora tu memoria.",
       howToPlay: `
-        <p>El clásico juego de memoria con un toque moderno. Pon a prueba tu capacidad de recordar la posición de las cartas.</p>
-        <ul>
-  <li>🎴 Se muestra una cuadrícula de cartas boca abajo.</li>
-  <li>👆 El jugador debe seleccionar dos cartas para voltearlas.</li>
-  <li>✅ Si las cartas son iguales, permanecen visibles y el jugador gana <strong>20 puntos</strong>.</li>
-  <li>❌ Si no coinciden, se vuelven a ocultar y el jugador pierde <strong>5 puntos</strong>.</li>
-  <li>🎯 El objetivo es encontrar todas las parejas con la mayor cantidad de puntos posible.</li>
-  <li>📊 Se registran los movimientos, las parejas encontradas y el puntaje obtenido.</li>
-</ul>
+        <p>CardMatch es un juego de memoria donde debes encontrar pares de cartas iguales en una cuadrícula 4x4. Voltea dos cartas por turno: si coinciden, ganas <strong>20 puntos</strong> y permanecen descubiertas; si no coinciden, se ocultan y pierdes <strong>5 puntos</strong>. ¡Completa todos los pares con la mayor puntuación posible!</p>
+
+        
+
+<div id="cardmatch-game" style="margin:1.4rem 0; font-family:'Exo 2',sans-serif; user-select:none;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:0.8rem;">
+    <span style="font-family:'Orbitron',sans-serif; font-size:0.7rem; color:var(--m-accent,#10B981); font-weight:700; letter-spacing:0.1em;">PUNTAJE</span>
+    <span id="cm-score" style="font-family:'Orbitron',sans-serif; font-size:1.8rem; color:var(--m-accent,#10B981); font-weight:900; text-shadow:0 0 12px var(--m-accent,#10B981);">0</span>
+  </div>
+  <div id="cm-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:1rem;"></div>
+</div>
 
 <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.6rem;">
 
   <div style="display:flex; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#10B981); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
     <span style="font-family:'Orbitron'; font-size:0.6rem; color:var(--m-accent,#10B981); font-weight:700;">ADMINISTRADOR</span>
-    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
-      Gestiona los mazos de cartas, crea nuevos, edita su información y agrega o elimina cartas. 
-      También puede administrar jugadores y consultar estadísticas generales del sistema.
-    </span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">
+  Gestiona los <strong>mazos de cartas</strong>, crea nuevos, edita su información y administra las cartas disponibles. 
+  Además, puede gestionar los <strong>jugadores</strong> y consultar estadísticas generales de las partidas jugadas.
+</span>
   </div>
 
   <div style="display:flex; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
     <span style="font-family:'Orbitron'; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700;">JUGADOR</span>
-    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
-      Inicia sesión, selecciona un mazo y una dificultad, juega para obtener puntos y puede consultar sus estadísticas, ranking y partidas realizadas.
-    </span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">
+  Inicia sesión, selecciona un <strong>mazo</strong> y un nivel de <strong>dificultad</strong>, juega para obtener la mayor cantidad de puntos posible encontrando las parejas. 
+  Al finalizar, puedes consultar tus <strong>estadísticas</strong>, revisar tu posición en el <strong>ranking</strong> y ver el historial de tus partidas realizadas.
+</span>
   </div>
 
 </div>
@@ -782,6 +785,26 @@
     cursor: default !important;
   }
 
+  /* === CARDMATCH GAME STYLES === */
+  #cardmatch-game {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  #cm-grid > div {
+    transition: all 0.2s ease;
+  }
+
+  #cm-grid > div:active:not(.matched) {
+    transform: scale(0.95);
+  }
+
+  #cm-grid > div.matched {
+    pointer-events: none;
+  }
+
   /* info below photo */
   .gz-member-info {
     display: flex;
@@ -921,6 +944,118 @@
       });
     });
   }
+
+  function initCardMatchGame() {
+    const gameContainer = document.getElementById("cardmatch-game");
+    if (!gameContainer) return;
+
+    const grid = document.getElementById("cm-grid");
+    const scoreDisplay = document.getElementById("cm-score");
+    const accent = getComputedStyle(document.getElementById("gzModal")).getPropertyValue("--m-accent").trim() || "#10B981";
+
+    const symbols = ["🍎", "🍎", "📚", "📚", "🎮", "🎮", "🐶", "🐶", "🌙", "🌙", "⚡", "⚡", "🎵", "🎵", "🔥", "🔥"];
+    let shuffled = [...symbols].sort(() => 0.5 - Math.random());
+    
+    let first = null;
+    let second = null;
+    let lock = false;
+    let score = 0;
+
+    grid.innerHTML = "";
+    shuffled.forEach((symbol) => {
+      const card = document.createElement("div");
+      card.dataset.value = symbol;
+      card.style.cssText = `
+        height:60px;
+        background:rgba(255,255,255,0.04);
+        border:1px solid rgba(255,255,255,0.1);
+        border-radius:10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:24px;
+        cursor:pointer;
+        color:transparent;
+        transition:all 0.2s ease;
+      `;
+
+      card.addEventListener("mouseenter", function() {
+        if (!this.classList.contains("matched") && this !== first) {
+          this.style.background = "rgba(255,255,255,0.08)";
+          this.style.borderColor = accent;
+        }
+      });
+
+      card.addEventListener("mouseleave", function() {
+        if (!this.classList.contains("matched") && this !== first) {
+          this.style.background = "rgba(255,255,255,0.04)";
+          this.style.borderColor = "rgba(255,255,255,0.1)";
+        }
+      });
+
+      card.addEventListener("click", function() {
+        flipCard(card);
+      });
+
+      grid.appendChild(card);
+    });
+
+    function flipCard(card) {
+      if (lock || card === first || card.classList.contains("matched")) return;
+
+      card.textContent = card.dataset.value;
+      card.style.color = "#fff";
+      card.style.background = "rgba(255,255,255,0.1)";
+
+      if (!first) {
+        first = card;
+        return;
+      }
+
+      second = card;
+      lock = true;
+
+      if (first.dataset.value === second.dataset.value) {
+        first.classList.add("matched");
+        second.classList.add("matched");
+        first.style.background = accent;
+        second.style.background = accent;
+        first.style.borderColor = accent;
+        second.style.borderColor = accent;
+        first.style.color = "#000";
+        second.style.color = "#000";
+        first.style.fontWeight = "700";
+        second.style.fontWeight = "700";
+        first.style.cursor = "default";
+        second.style.cursor = "default";
+        
+        score += 20;
+        scoreDisplay.textContent = score;
+        resetTurn();
+      } else {
+        score -= 5;
+        scoreDisplay.textContent = score;
+
+        setTimeout(() => {
+          first.textContent = "";
+          second.textContent = "";
+          first.style.color = "transparent";
+          second.style.color = "transparent";
+          first.style.background = "rgba(255,255,255,0.04)";
+          second.style.background = "rgba(255,255,255,0.04)";
+          first.style.borderColor = "rgba(255,255,255,0.1)";
+          second.style.borderColor = "rgba(255,255,255,0.1)";
+          resetTurn();
+        }, 700);
+      }
+    }
+
+    function resetTurn() {
+      first = null;
+      second = null;
+      lock = false;
+    }
+  }
   const overlay = document.createElement("div");
   overlay.className = "gz-modal-overlay";
   overlay.id = "gzModalOverlay";
@@ -1026,7 +1161,10 @@
     document.body.style.overflow = "hidden";
 
     /* initialize interactive bingo board if present */
-    requestAnimationFrame(() => initBingoBoard());
+    requestAnimationFrame(() => {
+      initBingoBoard();
+      initCardMatchGame();
+    });
 
     /* close button */
     document
