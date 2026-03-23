@@ -18,7 +18,8 @@
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],
-      shortDesc: "Completa el crucigrama con palabras temáticas antes de que se acabe el tiempo.",
+      shortDesc:
+        "Completa el crucigrama con palabras temáticas antes de que se acabe el tiempo.",
       howToPlay: `
         <p>Un crucigrama digital donde debes rellenar una cuadrícula con letras para formar palabras correctas en horizontal y vertical. Las palabras son gestionadas por el administrador desde una base de datos SQL y pueden cambiar en cualquier momento.</p>
 
@@ -125,16 +126,45 @@
     {
       id: 2,
       number: "02",
-      title: "¿Quién Quiere Ser Millonario?",
+      title: "¿Quién Quiere Ser Aprendiz?",
       emoji: "💰",
       accent: "#FF9F00",
       accentBg: "rgba(255,159,0,0.12)",
       tags: ["PHP", "JS", "CSS", "SQL"],
-      shortDesc: "15 preguntas, 4 comodines y la presión del tiempo.",
+      shortDesc:
+        "Responde hasta la última pregunta, 4 comodines y la presión del tiempo.",
       howToPlay: `
   <p>Inspirado en el famoso concurso de televisión. Responde preguntas de conocimiento general, usa tus comodines con sabiduría y acumula la mayor puntuación posible para escalar en el ranking.</p>
 
   <div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
+
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// EJEMPLO DE PREGUNTA</p>
+
+    <div id="mm-demo" style="margin-bottom:1.2rem;">
+      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 14px; margin-bottom:10px; font-size:0.82rem; color:rgba(255,255,255,0.9); font-weight:600;">
+        ¿Cuál es el río más largo del mundo?
+      </div>
+
+      <div id="mm-A" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" onclick="if(this.style.cursor==='default')return;['mm-A','mm-B','mm-C','mm-D'].forEach(function(i){var o=document.getElementById(i);o.style.cursor='default';});this.style.background='rgba(255,80,80,0.15)';this.style.borderColor='rgba(255,100,100,0.5)';this.style.color='rgba(255,130,130,1)';var b=document.getElementById('mm-B');b.style.background='rgba(100,200,100,0.2)';b.style.borderColor='rgba(100,200,100,0.7)';b.style.color='rgba(150,255,150,1)';document.getElementById('mm-fb').style.color='rgba(255,120,120,1)';document.getElementById('mm-fb').textContent='Incorrecto. La respuesta correcta era el Río Nilo.';document.getElementById('mm-retry').style.display='inline-block';">
+        <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;background:rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;">A</span> Río Amazonas
+      </div>
+
+      <div id="mm-B" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" onclick="if(this.style.cursor==='default')return;['mm-A','mm-B','mm-C','mm-D'].forEach(function(i){var o=document.getElementById(i);o.style.cursor='default';});this.style.background='rgba(100,200,100,0.2)';this.style.borderColor='rgba(100,200,100,0.7)';this.style.color='rgba(150,255,150,1)';document.getElementById('mm-fb').style.color='rgba(120,220,120,1)';document.getElementById('mm-fb').textContent='¡Correcto! El Río Nilo mide aproximadamente 6.650 km.';document.getElementById('mm-retry').style.display='inline-block';">
+        <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;background:rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;">B</span> Río Nilo
+      </div>
+
+      <div id="mm-C" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" onclick="if(this.style.cursor==='default')return;['mm-A','mm-B','mm-C','mm-D'].forEach(function(i){var o=document.getElementById(i);o.style.cursor='default';});this.style.background='rgba(255,80,80,0.15)';this.style.borderColor='rgba(255,100,100,0.5)';this.style.color='rgba(255,130,130,1)';var b=document.getElementById('mm-B');b.style.background='rgba(100,200,100,0.2)';b.style.borderColor='rgba(100,200,100,0.7)';b.style.color='rgba(150,255,150,1)';document.getElementById('mm-fb').style.color='rgba(255,120,120,1)';document.getElementById('mm-fb').textContent='Incorrecto. La respuesta correcta era el Río Nilo.';document.getElementById('mm-retry').style.display='inline-block';">
+        <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;background:rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;">C</span> Río Yangtsé
+      </div>
+
+      <div id="mm-D" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" onclick="if(this.style.cursor==='default')return;['mm-A','mm-B','mm-C','mm-D'].forEach(function(i){var o=document.getElementById(i);o.style.cursor='default';});this.style.background='rgba(255,80,80,0.15)';this.style.borderColor='rgba(255,100,100,0.5)';this.style.color='rgba(255,130,130,1)';var b=document.getElementById('mm-B');b.style.background='rgba(100,200,100,0.2)';b.style.borderColor='rgba(100,200,100,0.7)';b.style.color='rgba(150,255,150,1)';document.getElementById('mm-fb').style.color='rgba(255,120,120,1)';document.getElementById('mm-fb').textContent='Incorrecto. La respuesta correcta era el Río Nilo.';document.getElementById('mm-retry').style.display='inline-block';">
+        <span style="font-family:'Orbitron',sans-serif;font-size:0.6rem;font-weight:700;background:rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;">D</span> Río Misisipi
+      </div>
+
+      <div id="mm-fb" style="font-size:0.75rem;min-height:18px;margin-top:6px;font-style:italic;"></div>
+
+      <button id="mm-retry" style="display:none;margin-top:6px;font-size:0.7rem;padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;" onclick="var base='rgba(255,255,255,0.04)';var bc='rgba(255,255,255,0.1)';var tc='rgba(255,255,255,0.7)';['mm-A','mm-B','mm-C','mm-D'].forEach(function(i){var o=document.getElementById(i);o.style.background=base;o.style.borderColor=bc;o.style.color=tc;o.style.cursor='pointer';});document.getElementById('mm-fb').textContent='';document.getElementById('mm-retry').style.display='none';">Intentar de nuevo</button>
+    </div>
 
     <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
 
@@ -223,7 +253,7 @@
     </div>
     <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
       <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
-      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Elige una categoría, responde las preguntas antes de que se agote el tiempo (<strong>2 min por pregunta</strong>), usa tus comodines una sola vez y retírate cuando quieras para guardar tu puntaje. Solo se guarda tu <strong>mejor resultado</strong> en el ranking.</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Elige una categoría y responde preguntas hasta que falles o las completes todas. Tienes <strong>2 min por pregunta</strong> y cada comodín se usa una sola vez. Solo se guarda tu <strong>mejor resultado</strong> en el ranking.</span>
     </div>
   </div>
 `,
@@ -1241,11 +1271,31 @@
 
     const grid = document.getElementById("cm-grid");
     const scoreDisplay = document.getElementById("cm-score");
-    const accent = getComputedStyle(document.getElementById("gzModal")).getPropertyValue("--m-accent").trim() || "#10B981";
+    const accent =
+      getComputedStyle(document.getElementById("gzModal"))
+        .getPropertyValue("--m-accent")
+        .trim() || "#10B981";
 
-    const symbols = ["🍎", "🍎", "📚", "📚", "🎮", "🎮", "🐶", "🐶", "🌙", "🌙", "⚡", "⚡", "🎵", "🎵", "🔥", "🔥"];
+    const symbols = [
+      "🍎",
+      "🍎",
+      "📚",
+      "📚",
+      "🎮",
+      "🎮",
+      "🐶",
+      "🐶",
+      "🌙",
+      "🌙",
+      "⚡",
+      "⚡",
+      "🎵",
+      "🎵",
+      "🔥",
+      "🔥",
+    ];
     let shuffled = [...symbols].sort(() => 0.5 - Math.random());
-    
+
     let first = null;
     let second = null;
     let lock = false;
@@ -1269,21 +1319,21 @@
         transition:all 0.2s ease;
       `;
 
-      card.addEventListener("mouseenter", function() {
+      card.addEventListener("mouseenter", function () {
         if (!this.classList.contains("matched") && this !== first) {
           this.style.background = "rgba(255,255,255,0.08)";
           this.style.borderColor = accent;
         }
       });
 
-      card.addEventListener("mouseleave", function() {
+      card.addEventListener("mouseleave", function () {
         if (!this.classList.contains("matched") && this !== first) {
           this.style.background = "rgba(255,255,255,0.04)";
           this.style.borderColor = "rgba(255,255,255,0.1)";
         }
       });
 
-      card.addEventListener("click", function() {
+      card.addEventListener("click", function () {
         flipCard(card);
       });
 
@@ -1318,7 +1368,7 @@
         second.style.fontWeight = "700";
         first.style.cursor = "default";
         second.style.cursor = "default";
-        
+
         score += 20;
         scoreDisplay.textContent = score;
         resetTurn();
@@ -1439,7 +1489,8 @@
         const r = w.dir === "H" ? w.row : w.row + i;
         const c = w.dir === "H" ? w.col + i : w.col;
         const key = `${r}-${c}`;
-        if (!cellMap[key]) cellMap[key] = { letter: w.word[i], wordIds: [], userInput: "" };
+        if (!cellMap[key])
+          cellMap[key] = { letter: w.word[i], wordIds: [], userInput: "" };
         else cellMap[key].letter = w.word[i]; // should match if crossings are correct
         cellMap[key].wordIds.push(w.id);
       }
@@ -1538,7 +1589,9 @@
       document.getElementById("cw-clue-text").textContent = w.clue;
 
       // Highlight clue item
-      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active"));
+      document
+        .querySelectorAll(".cw-clue-item")
+        .forEach((el) => el.classList.remove("cw-clue-active"));
       const clueEl = document.getElementById(`cw-clue-${w.id}`);
       if (clueEl) clueEl.classList.add("cw-clue-active");
     }
@@ -1555,7 +1608,9 @@
       Object.values(cellEls).forEach((el) => {
         el.classList.remove("cw-highlight", "cw-selected");
       });
-      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active"));
+      document
+        .querySelectorAll(".cw-clue-item")
+        .forEach((el) => el.classList.remove("cw-clue-active"));
     }
 
     function onCellClick(key, div) {
@@ -1565,7 +1620,9 @@
       // If clicking a cell that belongs to current word, just move selection
       if (selectedWord && getCellsOfWord(selectedWord).includes(key)) {
         const keys = getCellsOfWord(selectedWord);
-        keys.forEach((k) => cellEls[k] && cellEls[k].classList.add("cw-highlight"));
+        keys.forEach(
+          (k) => cellEls[k] && cellEls[k].classList.add("cw-highlight"),
+        );
         selectCell(key);
         document.getElementById("cw-clue-text").textContent = selectedWord.clue;
         const clueEl = document.getElementById(`cw-clue-${selectedWord.id}`);
@@ -1591,7 +1648,8 @@
         // Clear current cell and move back
         if (cellMap[selectedCell] && cellMap[selectedCell].userInput) {
           cellMap[selectedCell].userInput = "";
-          const letterSpan = cellEls[selectedCell].querySelector(".cw-cell-letter");
+          const letterSpan =
+            cellEls[selectedCell].querySelector(".cw-cell-letter");
           if (letterSpan) letterSpan.textContent = "";
           cellEls[selectedCell].classList.remove("cw-correct", "cw-wrong");
         } else {
@@ -1601,9 +1659,14 @@
         return;
       }
 
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+      if (
+        e.key === "ArrowRight" ||
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown"
+      ) {
         e.preventDefault();
-        const dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : -1;
+        const dir = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
         moveCursor(dir);
         return;
       }
@@ -1612,10 +1675,14 @@
         e.preventDefault();
         if (!cellMap[selectedCell]) return;
 
-        const letter = key.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+        const letter = key
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toUpperCase();
         cellMap[selectedCell].userInput = letter;
 
-        const letterSpan = cellEls[selectedCell].querySelector(".cw-cell-letter");
+        const letterSpan =
+          cellEls[selectedCell].querySelector(".cw-cell-letter");
         if (letterSpan) letterSpan.textContent = letter;
         cellEls[selectedCell].classList.remove("cw-correct", "cw-wrong");
 
@@ -1672,21 +1739,32 @@
 
     /* Reset button */
     document.getElementById("cw-btn-reset").addEventListener("click", () => {
-      Object.values(cellMap).forEach((data) => { data.userInput = ""; });
+      Object.values(cellMap).forEach((data) => {
+        data.userInput = "";
+      });
       Object.values(cellEls).forEach((el) => {
         const span = el.querySelector(".cw-cell-letter");
         if (span) span.textContent = "";
-        el.classList.remove("cw-correct", "cw-wrong", "cw-selected", "cw-highlight");
+        el.classList.remove(
+          "cw-correct",
+          "cw-wrong",
+          "cw-selected",
+          "cw-highlight",
+        );
       });
       selectedCell = null;
       selectedWord = null;
-      document.getElementById("cw-clue-text").textContent = "Haz clic en una celda para ver su pista.";
+      document.getElementById("cw-clue-text").textContent =
+        "Haz clic en una celda para ver su pista.";
       document.getElementById("cw-msg").textContent = "";
-      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active", "cw-clue-done"));
+      document
+        .querySelectorAll(".cw-clue-item")
+        .forEach((el) => el.classList.remove("cw-clue-active", "cw-clue-done"));
     });
 
     /* Cleanup keydown listener when modal closes */
-    gameEl._cwCleanup = () => document.removeEventListener("keydown", onKeyDown);
+    gameEl._cwCleanup = () =>
+      document.removeEventListener("keydown", onKeyDown);
   }
 
   /* ----------------------------------------------------------
