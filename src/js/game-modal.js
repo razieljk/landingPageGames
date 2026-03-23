@@ -123,7 +123,7 @@
           initials: "AA",
           name: "Nombre Apellido",
           role: "Programador principal",
-          photo: "",
+          photo: "./src/img/ahorcado/aa.jpg",
         },
         {
           initials: "BB",
