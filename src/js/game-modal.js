@@ -62,35 +62,112 @@
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc: "15 preguntas, 4 comodines y la presión del tiempo.",
       howToPlay: `
-        <p>Inspirado en el famoso concurso de televisión. Responde preguntas de opción múltiple con dificultad creciente y llega al millón de puntos.</p>
-        <ul>
-          <li>❓ Hay <strong>15 preguntas</strong> con 4 opciones de respuesta cada una.</li>
-          <li>📈 La dificultad y el valor de las preguntas aumenta progresivamente.</li>
-          <li>🆘 Tienes <strong>4 comodines</strong>: 50/50, Llamada a un amigo, Ayuda del público y Cambiar pregunta.</li>
-          <li>⏱️ Cada pregunta tiene un límite de tiempo — ¡no te confíes!</li>
-          <li>🏦 Hay puntos de "seguro" en las preguntas 5 y 10: si fallas, no bajas de ahí.</li>
-          <li>🏆 Tu puntuación final se guarda en el ranking global.</li>
-        </ul>
+  <p>Inspirado en el famoso concurso de televisión. Responde <strong>15 preguntas</strong> de opción múltiple con dificultad creciente y acumula la mayor cantidad de dinero posible.</p>
+
+  <div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
+
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// ESCALA DE PREMIOS</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
+      ${[
+        { q: "P. 1", val: "$100", safe: false },
+        { q: "P. 2", val: "$200", safe: false },
+        { q: "P. 3", val: "$300", safe: false },
+        { q: "P. 4", val: "$500", safe: false },
+        { q: "P. 5", val: "$1.000", safe: true },
+        { q: "P. 6", val: "$2.000", safe: false },
+        { q: "P. 7", val: "$4.000", safe: false },
+        { q: "P. 8", val: "$8.000", safe: false },
+        { q: "P. 9", val: "$16.000", safe: false },
+        { q: "P. 10", val: "$32.000", safe: true },
+        { q: "P. 11", val: "$64.000", safe: false },
+        { q: "P. 12", val: "$125.000", safe: false },
+        { q: "P. 13", val: "$250.000", safe: false },
+        { q: "P. 14", val: "$500.000", safe: false },
+        { q: "P. 15", val: "$1.000.000", safe: false },
+      ]
+        .map(
+          ({ q, val, safe }) => `
+        <div style="background:${safe ? "rgba(255,159,0,0.15)" : "rgba(255,255,255,0.04)"}; border:1px solid ${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.08)"}; border-radius:8px; padding:6px 8px; display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.6rem; color:${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.4)"}; font-family:'Orbitron',sans-serif;">${q}${safe ? " 🏦" : ""}</span>
+          <span style="font-size:0.65rem; color:${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.7)"}; font-weight:${safe ? "700" : "400"};">${val}</span>
+        </div>
       `,
+        )
+        .join("")}
+    </div>
+
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// COMODINES</p>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
+      ${[
+        {
+          icon: "50/50",
+          label: "Cincuenta y Cincuenta",
+          desc: "Elimina 2 respuestas incorrectas",
+        },
+        {
+          icon: "📞",
+          label: "Llamada a un amigo",
+          desc: "Consulta a un experto por teléfono",
+        },
+        {
+          icon: "👥",
+          label: "Ayuda del público",
+          desc: "El público vota por la respuesta correcta",
+        },
+        {
+          icon: "🔄",
+          label: "Cambiar pregunta",
+          desc: "Sustituye la pregunta por una nueva",
+        },
+      ]
+        .map(
+          ({ icon, label, desc }) => `
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
+          <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
+          <div>
+            <div style="font-size:0.65rem; color:var(--m-accent,#FF9F00); font-weight:700; margin-bottom:2px;">${label}</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.55); line-height:1.5;">${desc}</div>
+          </div>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
+    <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#FF9F00); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Selecciona una categoría, responde las <strong>15 preguntas</strong> usando tus comodines con sabiduría. Las preguntas <strong>5 y 10</strong> son puntos de seguro — si fallas después, no bajas de ahí. ¡Llega al millón!</span>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">TIEMPO</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Cada pregunta tiene un <strong>límite de tiempo</strong>. Si el contador llega a cero sin responder, se cuenta como respuesta incorrecta. ¡No te confíes!</span>
+    </div>
+  </div>
+`,
       difficulty: 4,
       players: "1 jugador",
       team: [
         {
-          initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
+          initials: "FP",
+          name: "Franklin Andres Penilla Jaramillo",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
-          initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
+          initials: "YG",
+          name: "Yesly Yasiri Gomez Giraldo",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
-          initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          initials: "CS",
+          name: "Cristian Camilo Bermudez Sierra",
+          role: "Integrante del equipo",
           photo: "",
         },
       ],
