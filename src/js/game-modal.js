@@ -18,36 +18,107 @@
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],
-      shortDesc: "Completa el crucigrama con palabrs temáticas.",
+      shortDesc:
+        "Completa el crucigrama con palabras temáticas antes de que se acabe el tiempo.",
       howToPlay: `
-        <p>El Crucigrama es un juego de palabras donde debes rellenar una cuadrícula con letras para formar palabras correctas, tanto en horizontal como en vertical.</p>
+        <p>Un crucigrama digital donde debes rellenar una cuadrícula con letras para formar palabras correctas en horizontal y vertical. Las palabras son gestionadas por el administrador desde una base de datos SQL y pueden cambiar en cualquier momento.</p>
+
+        <div id="cw-game" style="margin:1.6rem 0; font-family:'Exo 2',sans-serif; user-select:none;">
+
+          <!-- GRID 10x10 -->
+          <div id="cw-grid" style="
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 3px;
+            margin-bottom: 1.4rem;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+          "></div>
+
+          <!-- CLUE ACTIVE -->
+          <div id="cw-clue-active" style="
+            min-height: 38px;
+            background: rgba(255,215,0,0.08);
+            border-left: 3px solid #FFD700;
+            border-radius: 0 8px 8px 0;
+            padding: 0.55rem 1rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          ">
+            <span style="font-family:'Orbitron',sans-serif; font-size:0.58rem; color:#FFD700; font-weight:700; white-space:nowrap;">PISTA</span>
+            <span id="cw-clue-text">Haz clic en una celda para ver su pista.</span>
+          </div>
+
+          <!-- PISTAS LIST -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1.4rem;">
+
+            <div>
+              <div style="font-family:'Orbitron',sans-serif; font-size:0.58rem; letter-spacing:0.15em; color:#FFD700; opacity:0.7; margin-bottom:0.5rem;">HORIZONTAL →</div>
+              <div id="cw-clues-h" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
+            </div>
+
+            <div>
+              <div style="font-family:'Orbitron',sans-serif; font-size:0.58rem; letter-spacing:0.15em; color:#FFD700; opacity:0.7; margin-bottom:0.5rem;">VERTICAL ↓</div>
+              <div id="cw-clues-v" style="display:flex; flex-direction:column; gap:0.35rem;"></div>
+            </div>
+
+          </div>
+
+          <!-- ACTIONS -->
+          <div style="display:flex; gap:0.7rem; margin-top:1.2rem; flex-wrap:wrap;">
+            <button id="cw-btn-verify" style="
+              font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700;
+              letter-spacing:0.1em; padding:0.55rem 1.2rem;
+              background:rgba(255,215,0,0.15); border:1px solid #FFD700;
+              color:#FFD700; border-radius:99px; cursor:pointer;
+              transition:all 0.2s;
+            ">✓ VERIFICAR</button>
+            <button id="cw-btn-reset" style="
+              font-family:'Orbitron',sans-serif; font-size:0.65rem; font-weight:700;
+              letter-spacing:0.1em; padding:0.55rem 1.2rem;
+              background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.15);
+              color:rgba(255,255,255,0.45); border-radius:99px; cursor:pointer;
+              transition:all 0.2s;
+            ">↺ REINICIAR</button>
+            <span id="cw-msg" style="
+              font-family:'Exo 2',sans-serif; font-size:0.8rem;
+              color:rgba(255,255,255,0.4); align-self:center;
+            "></span>
+          </div>
+
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.2rem;">
+          <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid #FFD700; border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:#FFD700; font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
+            <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Crea crucigramas personalizados definiendo el <strong>tamaño de la cuadrícula</strong>, las <strong>palabras</strong>, sus <strong>pistas</strong> y el <strong>tiempo máximo</strong>. Puede editar o eliminar crucigramas existentes y consultar el <strong>ranking</strong> de cada uno.</span>
+          </div>
+          <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+            <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
+            <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Se registra, inicia sesión y accede al <strong>panel de juego</strong> donde ve todos los crucigramas disponibles con su ranking. Selecciona uno, lo completa antes de que acabe el temporizador y su tiempo queda guardado en el <strong>top 5</strong>.</span>
+          </div>
+        </div>
+
         <ul>
-          <li>📋 Se presentan pistas numeradas para cada palabra (horizontal y vertical).</li>
-          <li>🖱️ Haz clic en una celda de la cuadrícula para seleccionarla y escribe la letra correspondiente.</li>
-          <li>🔄 Las palabras cambian cada día: el tablero se genera dinámicamente desde la base de datos.</li>
-          <li>✅ Completa todas las palabras antes de que se acabe el tiempo para obtener el puntaje máximo.</li>
-          <li>💡 Si te atascas, puedes usar la pista adicional (penaliza puntos).</li>
+          <li>📋 Haz clic en una celda activa para seleccionarla y escribe la letra con el teclado.</li>
+          <li>⏱️ Hay un <strong>temporizador</strong> por crucigrama — complétalo antes de que se acabe.</li>
+          <li>⏳ Si realizas algun tipo de trampa seras penalizado por un<strong>tiempo de espera de 2 minutos</strong></li>
+          <li>🏆 Solo los 5 mejores tiempos queda registrado en el <strong>ranking</strong> de jugadores</li>
+          <li>✏️ Puedes editar tu <strong>perfil</strong> desde el panel del jugador.</li>
         </ul>
       `,
       difficulty: 3,
       players: "1 jugador",
       team: [
         {
-          initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
-          photo: "",
-        },
-        {
-          initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
-          photo: "",
-        },
-        {
-          initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          initials: "foto",
+          name: "Juan Sebastian Trujillo Serna",
+          role: "Desarrollador",
           photo: "",
         },
       ],
@@ -62,40 +133,48 @@
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc: "15 preguntas, 4 comodines y la presión del tiempo.",
       howToPlay: `
-  <p>Inspirado en el famoso concurso de televisión. Responde <strong>15 preguntas</strong> de opción múltiple con dificultad creciente y acumula la mayor cantidad de dinero posible.</p>
+  <p>Inspirado en el famoso concurso de televisión. Responde preguntas de conocimiento general, usa tus comodines con sabiduría y acumula la mayor puntuación posible para escalar en el ranking.</p>
 
   <div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
 
-    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// ESCALA DE PREMIOS</p>
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
 
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
       ${[
-        { q: "P. 1", val: "$100", safe: false },
-        { q: "P. 2", val: "$200", safe: false },
-        { q: "P. 3", val: "$300", safe: false },
-        { q: "P. 4", val: "$500", safe: false },
-        { q: "P. 5", val: "$1.000", safe: true },
-        { q: "P. 6", val: "$2.000", safe: false },
-        { q: "P. 7", val: "$4.000", safe: false },
-        { q: "P. 8", val: "$8.000", safe: false },
-        { q: "P. 9", val: "$16.000", safe: false },
-        { q: "P. 10", val: "$32.000", safe: true },
-        { q: "P. 11", val: "$64.000", safe: false },
-        { q: "P. 12", val: "$125.000", safe: false },
-        { q: "P. 13", val: "$250.000", safe: false },
-        { q: "P. 14", val: "$500.000", safe: false },
-        { q: "P. 15", val: "$1.000.000", safe: false },
+        {
+          label: "Fácil",
+          val: "$100.000",
+          color: "rgba(100,200,100,0.15)",
+          border: "rgba(100,200,100,0.4)",
+          text: "rgba(120,220,120,1)",
+        },
+        {
+          label: "Media",
+          val: "$150.000",
+          color: "rgba(255,159,0,0.12)",
+          border: "var(--m-accent,#FF9F00)",
+          text: "var(--m-accent,#FF9F00)",
+        },
+        {
+          label: "Difícil",
+          val: "$175.000",
+          color: "rgba(255,80,80,0.1)",
+          border: "rgba(255,100,100,0.4)",
+          text: "rgba(255,120,120,1)",
+        },
       ]
         .map(
-          ({ q, val, safe }) => `
-        <div style="background:${safe ? "rgba(255,159,0,0.15)" : "rgba(255,255,255,0.04)"}; border:1px solid ${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.08)"}; border-radius:8px; padding:6px 8px; display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:0.6rem; color:${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.4)"}; font-family:'Orbitron',sans-serif;">${q}${safe ? " 🏦" : ""}</span>
-          <span style="font-size:0.65rem; color:${safe ? "var(--m-accent,#FF9F00)" : "rgba(255,255,255,0.7)"}; font-weight:${safe ? "700" : "400"};">${val}</span>
+          ({ label, val, color, border, text }) => `
+        <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
+          <div style="font-size:0.6rem; color:${text}; font-family:'Orbitron',sans-serif; font-weight:700; margin-bottom:3px;">${label}</div>
+          <div style="font-size:0.7rem; color:rgba(255,255,255,0.85); font-weight:600;">${val}</div>
         </div>
       `,
         )
         .join("")}
     </div>
+
+    <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Las primeras 3 preguntas siempre son fáciles para ayudarte a empezar.</p>
 
     <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// COMODINES</p>
 
@@ -104,22 +183,22 @@
         {
           icon: "50/50",
           label: "Cincuenta y Cincuenta",
-          desc: "Elimina 2 respuestas incorrectas",
+          desc: "Elimina 2 opciones incorrectas",
         },
         {
           icon: "📞",
           label: "Llamada a un amigo",
-          desc: "Consulta a un experto por teléfono",
-        },
-        {
-          icon: "👥",
-          label: "Ayuda del público",
-          desc: "El público vota por la respuesta correcta",
+          desc: "Consulta a un contacto — otorga 30 seg. extra",
         },
         {
           icon: "🔄",
           label: "Cambiar pregunta",
-          desc: "Sustituye la pregunta por una nueva",
+          desc: "Cambia por otra de la misma dificultad",
+        },
+        {
+          icon: "👥",
+          label: "Ayuda del público",
+          desc: "La audiencia vota — otorga 1 min. extra",
         },
       ]
         .map(
@@ -140,12 +219,12 @@
 
   <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
     <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#FF9F00); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
-      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
-      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Selecciona una categoría, responde las <strong>15 preguntas</strong> usando tus comodines con sabiduría. Las preguntas <strong>5 y 10</strong> son puntos de seguro — si fallas después, no bajas de ahí. ¡Llega al millón!</span>
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Gestiona las preguntas por categoría y dificultad, administra las cuentas de jugadores y controla la configuración general de la partida.</span>
     </div>
     <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
-      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">TIEMPO</span>
-      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Cada pregunta tiene un <strong>límite de tiempo</strong>. Si el contador llega a cero sin responder, se cuenta como respuesta incorrecta. ¡No te confíes!</span>
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Elige una categoría, responde las preguntas antes de que se agote el tiempo (<strong>2 min por pregunta</strong>), usa tus comodines una sola vez y retírate cuando quieras para guardar tu puntaje. Solo se guarda tu <strong>mejor resultado</strong> en el ranking.</span>
     </div>
   </div>
 `,
@@ -978,6 +1057,141 @@
     .gz-team-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
   }
 
+  /* === CROSSWORD STYLES === */
+  #cw-game {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 1.2rem;
+  }
+
+  .cw-cell {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+    cursor: default;
+  }
+
+  .cw-cell.cw-active {
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.3);
+    cursor: pointer;
+  }
+
+  .cw-cell.cw-active:hover {
+    background: rgba(255,215,0,0.15);
+    border-color: rgba(255,215,0,0.6);
+  }
+
+  .cw-cell.cw-selected {
+    background: rgba(255,215,0,0.22) !important;
+    border: 1.5px solid #FFD700 !important;
+    box-shadow: 0 0 10px rgba(255,215,0,0.35);
+    color: #FFD700;
+  }
+
+  .cw-cell.cw-highlight {
+    background: rgba(255,215,0,0.1) !important;
+    border-color: rgba(255,215,0,0.4) !important;
+  }
+
+  .cw-cell.cw-correct {
+    background: rgba(74,222,128,0.18) !important;
+    border-color: #4ade80 !important;
+    color: #4ade80 !important;
+    box-shadow: 0 0 8px rgba(74,222,128,0.3);
+  }
+
+  .cw-cell.cw-wrong {
+    background: rgba(248,113,113,0.18) !important;
+    border-color: #f87171 !important;
+    color: #f87171 !important;
+    box-shadow: 0 0 8px rgba(248,113,113,0.3);
+  }
+
+  .cw-cell.cw-blocked {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .cw-cell-num {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    font-size: 0.38rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: #FFD700;
+    opacity: 0.8;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .cw-cell-letter {
+    font-size: clamp(0.5rem, 1.6vw, 0.78rem);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .cw-clue-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .cw-clue-item:hover {
+    background: rgba(255,215,0,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+
+  .cw-clue-item.cw-clue-active {
+    background: rgba(255,215,0,0.1);
+    color: #FFD700;
+  }
+
+  .cw-clue-item.cw-clue-done {
+    color: rgba(74,222,128,0.7);
+    text-decoration: line-through;
+  }
+
+  .cw-clue-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #FFD700;
+    opacity: 0.8;
+    min-width: 14px;
+    padding-top: 1px;
+  }
+
+  #cw-btn-verify:hover {
+    background: rgba(255,215,0,0.25) !important;
+    box-shadow: 0 0 14px rgba(255,215,0,0.3);
+  }
+
+  #cw-btn-reset:hover {
+    background: rgba(255,255,255,0.08) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+    color: rgba(255,255,255,0.7) !important;
+  }
+
   `;
   document.head.appendChild(style);
 
@@ -1133,6 +1347,352 @@
       lock = false;
     }
   }
+
+  /* ----------------------------------------------------------
+     CROSSWORD MINI-GAME
+     Cuadrícula 10x10 con 6 palabras temáticas del SENA
+  ---------------------------------------------------------- */
+  function initCrossword() {
+    const gameEl = document.getElementById("cw-game");
+    if (!gameEl) return;
+
+    /*
+      Palabras y sus coordenadas en la grilla 10x10 (fila, col, dirección)
+      Todas las palabras tienen relación con el SENA / desarrollo de software
+
+      Palabras:
+        1H  FICHA     fila 0, col 0, horizontal  (5 letras)
+        2H  ADMIN     fila 2, col 3, horizontal  (5 letras)
+        3H  LOGIN     fila 4, col 1, horizontal  (5 letras)
+        4H  APRENDIZ  fila 6, col 0, horizontal  (8 letras)
+        5V  SENA      fila 0, col 5, vertical    (4 letras)
+        6V  DATOS     fila 2, col 8, vertical    (5 letras)
+    */
+
+    const WORDS = [
+      {
+        id: 1,
+        word: "FICHA",
+        dir: "H",
+        row: 0,
+        col: 0,
+        clue: "Número que identifica tu grupo de formación en el SENA",
+      },
+      {
+        id: 2,
+        word: "ADMIN",
+        dir: "H",
+        row: 2,
+        col: 3,
+        clue: "Rol con permisos totales para gestionar el sistema",
+      },
+      {
+        id: 3,
+        word: "LOGIN",
+        dir: "H",
+        row: 4,
+        col: 1,
+        clue: "Proceso de autenticación para entrar a una plataforma",
+      },
+      {
+        id: 4,
+        word: "APRENDIZ",
+        dir: "H",
+        row: 6,
+        col: 0,
+        clue: "Estudiante que recibe formación técnica en el SENA",
+      },
+      {
+        id: 5,
+        word: "SENA",
+        dir: "V",
+        row: 0,
+        col: 5,
+        clue: "Institución nacional de formación profesional en Colombia",
+      },
+      {
+        id: 6,
+        word: "DATOS",
+        dir: "V",
+        row: 2,
+        col: 8,
+        clue: "Información almacenada en tablas dentro de una base de datos",
+      },
+    ];
+
+    /* Build cell map: key = "row-col" => { letter, wordIds[] } */
+    const cellMap = {};
+    const wordStarts = {}; // "row-col" => number label
+
+    let labelCounter = 1;
+    // Assign number labels — sort words by row then col for consistent numbering
+    const sorted = [...WORDS].sort((a, b) => a.row - b.row || a.col - b.col);
+    sorted.forEach((w) => {
+      const key = `${w.row}-${w.col}`;
+      if (!wordStarts[key]) {
+        wordStarts[key] = labelCounter++;
+      }
+      w.label = wordStarts[key];
+    });
+
+    WORDS.forEach((w) => {
+      for (let i = 0; i < w.word.length; i++) {
+        const r = w.dir === "H" ? w.row : w.row + i;
+        const c = w.dir === "H" ? w.col + i : w.col;
+        const key = `${r}-${c}`;
+        if (!cellMap[key]) cellMap[key] = { letter: w.word[i], wordIds: [], userInput: "" };
+        else cellMap[key].letter = w.word[i]; // should match if crossings are correct
+        cellMap[key].wordIds.push(w.id);
+      }
+    });
+
+    /* State */
+    let selectedCell = null;
+    let selectedWord = null;
+
+    /* Build grid DOM */
+    const gridEl = document.getElementById("cw-grid");
+    gridEl.innerHTML = "";
+
+    const cellEls = {}; // key => element
+
+    for (let r = 0; r < 10; r++) {
+      for (let c = 0; c < 10; c++) {
+        const key = `${r}-${c}`;
+        const div = document.createElement("div");
+        div.className = "cw-cell";
+        div.dataset.key = key;
+
+        if (cellMap[key]) {
+          div.classList.add("cw-active");
+
+          // number label
+          if (wordStarts[key]) {
+            const num = document.createElement("span");
+            num.className = "cw-cell-num";
+            num.textContent = wordStarts[key];
+            div.appendChild(num);
+          }
+
+          // letter display
+          const letterSpan = document.createElement("span");
+          letterSpan.className = "cw-cell-letter";
+          letterSpan.textContent = "";
+          div.appendChild(letterSpan);
+
+          div.addEventListener("click", () => onCellClick(key, div));
+        } else {
+          div.classList.add("cw-blocked");
+        }
+
+        gridEl.appendChild(div);
+        cellEls[key] = div;
+      }
+    }
+
+    /* Build clue lists */
+    const cluesH = document.getElementById("cw-clues-h");
+    const cluesV = document.getElementById("cw-clues-v");
+    cluesH.innerHTML = "";
+    cluesV.innerHTML = "";
+
+    WORDS.forEach((w) => {
+      const item = document.createElement("div");
+      item.className = "cw-clue-item";
+      item.id = `cw-clue-${w.id}`;
+      item.innerHTML = `<span class="cw-clue-num">${w.label}</span><span>${w.clue}</span>`;
+      item.addEventListener("click", () => selectWord(w));
+      (w.dir === "H" ? cluesH : cluesV).appendChild(item);
+    });
+
+    /* Keyboard input */
+    document.addEventListener("keydown", onKeyDown);
+
+    function getCellsOfWord(w) {
+      const keys = [];
+      for (let i = 0; i < w.word.length; i++) {
+        const r = w.dir === "H" ? w.row : w.row + i;
+        const c = w.dir === "H" ? w.col + i : w.col;
+        keys.push(`${r}-${c}`);
+      }
+      return keys;
+    }
+
+    function selectWord(w) {
+      // Deselect previous
+      clearHighlights();
+
+      selectedWord = w;
+
+      // Highlight all cells of word
+      const keys = getCellsOfWord(w);
+      keys.forEach((k) => {
+        if (cellEls[k]) cellEls[k].classList.add("cw-highlight");
+      });
+
+      // Select first empty cell or first cell
+      const firstEmpty = keys.find((k) => !cellMap[k].userInput);
+      const toSelect = firstEmpty || keys[0];
+      selectCell(toSelect);
+
+      // Update active clue display
+      document.getElementById("cw-clue-text").textContent = w.clue;
+
+      // Highlight clue item
+      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active"));
+      const clueEl = document.getElementById(`cw-clue-${w.id}`);
+      if (clueEl) clueEl.classList.add("cw-clue-active");
+    }
+
+    function selectCell(key) {
+      if (selectedCell && cellEls[selectedCell]) {
+        cellEls[selectedCell].classList.remove("cw-selected");
+      }
+      selectedCell = key;
+      if (cellEls[key]) cellEls[key].classList.add("cw-selected");
+    }
+
+    function clearHighlights() {
+      Object.values(cellEls).forEach((el) => {
+        el.classList.remove("cw-highlight", "cw-selected");
+      });
+      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active"));
+    }
+
+    function onCellClick(key, div) {
+      if (!cellMap[key]) return;
+      clearHighlights();
+
+      // If clicking a cell that belongs to current word, just move selection
+      if (selectedWord && getCellsOfWord(selectedWord).includes(key)) {
+        const keys = getCellsOfWord(selectedWord);
+        keys.forEach((k) => cellEls[k] && cellEls[k].classList.add("cw-highlight"));
+        selectCell(key);
+        document.getElementById("cw-clue-text").textContent = selectedWord.clue;
+        const clueEl = document.getElementById(`cw-clue-${selectedWord.id}`);
+        if (clueEl) clueEl.classList.add("cw-clue-active");
+        return;
+      }
+
+      // Pick the first word that contains this cell
+      const wordId = cellMap[key].wordIds[0];
+      const word = WORDS.find((w) => w.id === wordId);
+      if (word) selectWord(word);
+    }
+
+    function onKeyDown(e) {
+      if (!selectedCell || !selectedWord) return;
+      const modal = document.getElementById("gzModal");
+      if (!modal || !modal.closest(".gz-open")) return;
+
+      const key = e.key.toUpperCase();
+
+      if (e.key === "Backspace") {
+        e.preventDefault();
+        // Clear current cell and move back
+        if (cellMap[selectedCell] && cellMap[selectedCell].userInput) {
+          cellMap[selectedCell].userInput = "";
+          const letterSpan = cellEls[selectedCell].querySelector(".cw-cell-letter");
+          if (letterSpan) letterSpan.textContent = "";
+          cellEls[selectedCell].classList.remove("cw-correct", "cw-wrong");
+        } else {
+          // Move to previous cell
+          moveCursor(-1);
+        }
+        return;
+      }
+
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+        const dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : -1;
+        moveCursor(dir);
+        return;
+      }
+
+      if (/^[A-ZÁÉÍÓÚÑ]$/.test(key) || /^[a-záéíóúñ]$/.test(e.key)) {
+        e.preventDefault();
+        if (!cellMap[selectedCell]) return;
+
+        const letter = key.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+        cellMap[selectedCell].userInput = letter;
+
+        const letterSpan = cellEls[selectedCell].querySelector(".cw-cell-letter");
+        if (letterSpan) letterSpan.textContent = letter;
+        cellEls[selectedCell].classList.remove("cw-correct", "cw-wrong");
+
+        // Auto-advance
+        moveCursor(1);
+      }
+    }
+
+    function moveCursor(dir) {
+      if (!selectedWord || !selectedCell) return;
+      const keys = getCellsOfWord(selectedWord);
+      const idx = keys.indexOf(selectedCell);
+      const nextIdx = idx + dir;
+      if (nextIdx >= 0 && nextIdx < keys.length) {
+        selectCell(keys[nextIdx]);
+      }
+    }
+
+    /* Verify button */
+    document.getElementById("cw-btn-verify").addEventListener("click", () => {
+      let allCorrect = true;
+      let anyFilled = false;
+
+      Object.entries(cellMap).forEach(([key, data]) => {
+        const el = cellEls[key];
+        if (!el) return;
+        el.classList.remove("cw-correct", "cw-wrong");
+
+        if (data.userInput) {
+          anyFilled = true;
+          if (data.userInput === data.letter) {
+            el.classList.add("cw-correct");
+          } else {
+            el.classList.add("cw-wrong");
+            allCorrect = false;
+          }
+        } else {
+          allCorrect = false;
+        }
+      });
+
+      const msg = document.getElementById("cw-msg");
+      if (!anyFilled) {
+        msg.textContent = "Escribe al menos una letra.";
+        msg.style.color = "rgba(255,255,255,0.4)";
+      } else if (allCorrect) {
+        msg.textContent = "✅ ¡Crucigrama completo!";
+        msg.style.color = "#4ade80";
+      } else {
+        msg.textContent = "Revisa las celdas en rojo.";
+        msg.style.color = "#f87171";
+      }
+    });
+
+    /* Reset button */
+    document.getElementById("cw-btn-reset").addEventListener("click", () => {
+      Object.values(cellMap).forEach((data) => { data.userInput = ""; });
+      Object.values(cellEls).forEach((el) => {
+        const span = el.querySelector(".cw-cell-letter");
+        if (span) span.textContent = "";
+        el.classList.remove("cw-correct", "cw-wrong", "cw-selected", "cw-highlight");
+      });
+      selectedCell = null;
+      selectedWord = null;
+      document.getElementById("cw-clue-text").textContent = "Haz clic en una celda para ver su pista.";
+      document.getElementById("cw-msg").textContent = "";
+      document.querySelectorAll(".cw-clue-item").forEach((el) => el.classList.remove("cw-clue-active", "cw-clue-done"));
+    });
+
+    /* Cleanup keydown listener when modal closes */
+    gameEl._cwCleanup = () => document.removeEventListener("keydown", onKeyDown);
+  }
+
+  /* ----------------------------------------------------------
+     MODAL DOM
+  ---------------------------------------------------------- */
   const overlay = document.createElement("div");
   overlay.className = "gz-modal-overlay";
   overlay.id = "gzModalOverlay";
@@ -1180,6 +1740,10 @@
   }
 
   function openModal(game) {
+    // Cleanup previous crossword keyboard listener if any
+    const prevGame = document.getElementById("cw-game");
+    if (prevGame && prevGame._cwCleanup) prevGame._cwCleanup();
+
     /* set CSS variables for theming */
     modal.style.setProperty("--m-accent", game.accent);
     modal.style.setProperty("--m-accent-bg", game.accentBg);
@@ -1237,10 +1801,11 @@
     overlay.classList.add("gz-open");
     document.body.style.overflow = "hidden";
 
-    /* initialize interactive bingo board if present */
+    /* initialize interactive mini-games */
     requestAnimationFrame(() => {
       initBingoBoard();
       initCardMatchGame();
+      initCrossword();
     });
 
     /* close button */
@@ -1250,6 +1815,10 @@
   }
 
   function closeModal() {
+    // Cleanup crossword keyboard listener
+    const cwGame = document.getElementById("cw-game");
+    if (cwGame && cwGame._cwCleanup) cwGame._cwCleanup();
+
     overlay.classList.remove("gz-open");
     document.body.style.overflow = "";
   }
