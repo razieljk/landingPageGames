@@ -18,7 +18,7 @@
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],
-      shortDesc: "Completa el crucigrama con palabras temáticas.",
+      shortDesc: "Completa el crucigrama con palabrs temáticas.",
       howToPlay: `
         <p>El Crucigrama es un juego de palabras donde debes rellenar una cuadrícula con letras para formar palabras correctas, tanto en horizontal como en vertical.</p>
         <ul>
@@ -143,7 +143,7 @@
       id: 4,
       number: "04",
       title: "EduBingo",
-      emoji: "🧠",
+      emoji: "📚",
       accent: "#00F5FF",
       accentBg: "rgba(0,245,255,0.1)",
       tags: ["PHP", "JS", "SQL"],
@@ -223,7 +223,7 @@
         },
         {
           initials: "BM",
-          name: "Brahian Stiven Monsalve",
+          name: "Brahian Stiven Monsalve Idarraga",
           role: "Integrante del equipo",
           photo: "./src/img/bingo-literario/sm.jpg",
         },
