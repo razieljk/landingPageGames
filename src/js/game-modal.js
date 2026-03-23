@@ -18,8 +18,7 @@
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],
-      shortDesc:
-        "Completa el crucigrama con palabras temáticas antes de que se acabe el tiempo.",
+      shortDesc: "Completa el crucigrama con palabras temáticas antes de que se acabe el tiempo.",
       howToPlay: `
         <p>Un crucigrama digital donde debes rellenar una cuadrícula con letras para formar palabras correctas en horizontal y vertical. Las palabras son gestionadas por el administrador desde una base de datos SQL y pueden cambiar en cualquier momento.</p>
 
