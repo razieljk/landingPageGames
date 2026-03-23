@@ -132,35 +132,120 @@
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc: "15 preguntas, 4 comodines y la presión del tiempo.",
       howToPlay: `
-        <p>Inspirado en el famoso concurso de televisión. Responde preguntas de opción múltiple con dificultad creciente y llega al millón de puntos.</p>
-        <ul>
-          <li>❓ Hay <strong>15 preguntas</strong> con 4 opciones de respuesta cada una.</li>
-          <li>📈 La dificultad y el valor de las preguntas aumenta progresivamente.</li>
-          <li>🆘 Tienes <strong>4 comodines</strong>: 50/50, Llamada a un amigo, Ayuda del público y Cambiar pregunta.</li>
-          <li>⏱️ Cada pregunta tiene un límite de tiempo — ¡no te confíes!</li>
-          <li>🏦 Hay puntos de "seguro" en las preguntas 5 y 10: si fallas, no bajas de ahí.</li>
-          <li>🏆 Tu puntuación final se guarda en el ranking global.</li>
-        </ul>
+  <p>Inspirado en el famoso concurso de televisión. Responde preguntas de conocimiento general, usa tus comodines con sabiduría y acumula la mayor puntuación posible para escalar en el ranking.</p>
+
+  <div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
+
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
+      ${[
+        {
+          label: "Fácil",
+          val: "$100.000",
+          color: "rgba(100,200,100,0.15)",
+          border: "rgba(100,200,100,0.4)",
+          text: "rgba(120,220,120,1)",
+        },
+        {
+          label: "Media",
+          val: "$150.000",
+          color: "rgba(255,159,0,0.12)",
+          border: "var(--m-accent,#FF9F00)",
+          text: "var(--m-accent,#FF9F00)",
+        },
+        {
+          label: "Difícil",
+          val: "$175.000",
+          color: "rgba(255,80,80,0.1)",
+          border: "rgba(255,100,100,0.4)",
+          text: "rgba(255,120,120,1)",
+        },
+      ]
+        .map(
+          ({ label, val, color, border, text }) => `
+        <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
+          <div style="font-size:0.6rem; color:${text}; font-family:'Orbitron',sans-serif; font-weight:700; margin-bottom:3px;">${label}</div>
+          <div style="font-size:0.7rem; color:rgba(255,255,255,0.85); font-weight:600;">${val}</div>
+        </div>
       `,
+        )
+        .join("")}
+    </div>
+
+    <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Las primeras 3 preguntas siempre son fáciles para ayudarte a empezar.</p>
+
+    <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// COMODINES</p>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
+      ${[
+        {
+          icon: "50/50",
+          label: "Cincuenta y Cincuenta",
+          desc: "Elimina 2 opciones incorrectas",
+        },
+        {
+          icon: "📞",
+          label: "Llamada a un amigo",
+          desc: "Consulta a un contacto — otorga 30 seg. extra",
+        },
+        {
+          icon: "🔄",
+          label: "Cambiar pregunta",
+          desc: "Cambia por otra de la misma dificultad",
+        },
+        {
+          icon: "👥",
+          label: "Ayuda del público",
+          desc: "La audiencia vota — otorga 1 min. extra",
+        },
+      ]
+        .map(
+          ({ icon, label, desc }) => `
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
+          <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
+          <div>
+            <div style="font-size:0.65rem; color:var(--m-accent,#FF9F00); font-weight:700; margin-bottom:2px;">${label}</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.55); line-height:1.5;">${desc}</div>
+          </div>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
+    <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#FF9F00); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF9F00); font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Gestiona las preguntas por categoría y dificultad, administra las cuentas de jugadores y controla la configuración general de la partida.</span>
+    </div>
+    <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+      <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
+      <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Elige una categoría, responde las preguntas antes de que se agote el tiempo (<strong>2 min por pregunta</strong>), usa tus comodines una sola vez y retírate cuando quieras para guardar tu puntaje. Solo se guarda tu <strong>mejor resultado</strong> en el ranking.</span>
+    </div>
+  </div>
+`,
       difficulty: 4,
       players: "1 jugador",
       team: [
         {
-          initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
+          initials: "FP",
+          name: "Franklin Andres Penilla Jaramillo",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
-          initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
+          initials: "YG",
+          name: "Yesly Yasiri Gomez Giraldo",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
-          initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          initials: "CS",
+          name: "Cristian Camilo Bermudez Sierra",
+          role: "Integrante del equipo",
           photo: "",
         },
       ],
