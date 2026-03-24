@@ -13,8 +13,8 @@
     {
       id: 1,
       number: "01",
-      title: "Crucigrama",
-      emoji: "✏️",
+      title: "CruciCode",
+      emoji: "📝",
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],

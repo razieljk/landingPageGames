@@ -5,8 +5,8 @@
 const gamesData = [
   {
     id: 1,
-    emoji: '✏️',
-    name: 'Crucigrama',
+    emoji: '📝',
+    name: 'CruciCode',
     accent: '#FFD700',
     num: '// juego 01',
     desc: 'Rellena las casillas del tablero con letras para formar palabras horizontales y verticales. Las pistas aparecen en pantalla y las palabras se obtienen desde la base de datos, cambiando cada día para ofrecerte un reto completamente fresco.',
