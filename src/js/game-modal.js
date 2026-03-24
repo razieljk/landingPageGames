@@ -283,7 +283,7 @@
     {
       id: 3,
       number: "03",
-      title: "El Ahorcado",
+      title: "Salva el conocimiento",
       emoji: "🪢",
       accent: "#FF00A0",
       accentBg: "rgba(255,0,160,0.12)",
