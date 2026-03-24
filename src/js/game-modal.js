@@ -423,9 +423,9 @@
       accentBg: "rgba(124,58,237,0.12)",
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc:
-        "Trivia competitiva por fichas: responde rápido, gana más puntos y lleva tu ficha al top.",
+        "Juego de trivia multijugador tipo Kahoot donde la rapidez y el conocimiento se combinan: responde preguntas de opción múltiple, gana puntos por aciertos y velocidad, y lleva tu ficha a lo más alto del ranking en tiempo real.",
       howToPlay: `
-    <p>Un juego de preguntas al estilo Kahoot. Compite en equipo según tu ficha respondiendo preguntas de opción múltiple antes de que se acabe el tiempo. ¡La velocidad importa!</p>
+    <p>Un juego de trivia multijugador en tiempo real donde la estrategia, la rapidez y el conocimiento determinan quién domina la partida. Inspirado en dinámicas competitivas, cada decisión cuenta y cada segundo puede marcar la diferencia entre ganar o perder.</p>
     <ul>
       <li>🎮 El administrador crea la sala y comparte un <strong>PIN único</strong> para unirse.</li>
       <li>🔑 Ingresa el PIN, escoge tu <strong>nombre de usuario</strong> y selecciona la <strong>ficha</strong> a la que perteneces.</li>
