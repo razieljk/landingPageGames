@@ -19,11 +19,15 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 3.5rem;
+  justify-items: center;
 }
 
 /* ——— CARD BASE ——— */
 .instructor-card {
   position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
