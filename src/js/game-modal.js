@@ -13,8 +13,8 @@
     {
       id: 1,
       number: "01",
-      title: "Crucigrama",
-      emoji: "✏️",
+      title: "CruciCode",
+      emoji: "📝",
       accent: "#FFD700",
       accentBg: "rgba(255,215,0,0.12)",
       tags: ["PHP", "JS", "SQL"],
@@ -126,7 +126,7 @@
     {
       id: 2,
       number: "02",
-      title: "¿Quién Quiere Ser Aprendiz?",
+      title: "Millonarios del Saber",
       emoji: "💰",
       accent: "#FF9F00",
       accentBg: "rgba(255,159,0,0.12)",
@@ -423,19 +423,127 @@
       accentBg: "rgba(124,58,237,0.12)",
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc:
-        "Trivia competitiva por fichas: responde rápido, gana más puntos y lleva tu ficha al top.",
+        "Juego de trivia multijugador tipo Kahoot donde la rapidez y el conocimiento se combinan: responde preguntas de opción múltiple, gana puntos por aciertos y velocidad, y lleva tu ficha a lo más alto del ranking en tiempo real.",
       howToPlay: `
-    <p>Un juego de preguntas al estilo Kahoot. Compite en equipo según tu ficha respondiendo preguntas de opción múltiple antes de que se acabe el tiempo. ¡La velocidad importa!</p>
-    <ul>
-      <li>🎮 El administrador crea la sala y comparte un <strong>PIN único</strong> para unirse.</li>
-      <li>🔑 Ingresa el PIN, escoge tu <strong>nombre de usuario</strong> y selecciona la <strong>ficha</strong> a la que perteneces.</li>
-      <li>❓ Se mostrará una pregunta con varias opciones de respuesta.</li>
-      <li>⚡ <strong>Responde lo más rápido posible</strong>: entre más rápido respondas, más puntos obtienes.</li>
-      <li>✅ Solo las respuestas correctas suman puntos, la velocidad define cuántos.</li>
-      <li>❌ Una respuesta incorrecta no suma puntos, sin importar la velocidad.</li>
-      <li>🏆 Al final, el jugador con más puntos acumulados gana la partida.</li>
-    </ul>
-  `,
+<p>Un juego de trivia multijugador en tiempo real donde la velocidad es tan importante como el conocimiento. Cada segundo cuenta: responde rápido, acumula puntos y lleva tu ficha a la cima del ranking.</p>
+
+<div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
+
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#7C3AED); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// EJEMPLO EN TIEMPO REAL</p>
+
+  <div id="kahoot-demo" style="margin-bottom:1.2rem;">
+    
+    <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 14px; margin-bottom:10px; font-size:0.82rem; color:rgba(255,255,255,0.9); font-weight:600;">
+      ¿Cuál lenguaje se ejecuta en el navegador?
+    </div>
+
+    ${[
+      { id: "A", text: "PHP", correct: false },
+      { id: "B", text: "JavaScript", correct: true },
+      { id: "C", text: "SQL", correct: false },
+      { id: "D", text: "Python", correct: false },
+    ]
+      .map(
+        (opt) => `
+      <div id="k-${opt.id}" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" 
+      onclick="
+        if(this.style.cursor==='default')return;
+        let start = performance.now();
+        ['k-A','k-B','k-C','k-D'].forEach(i=>{
+          let o=document.getElementById(i);
+          o.style.cursor='default';
+        });
+
+        let time = Math.floor(Math.random()*2000)+500; // simula rapidez
+        let score = Math.max(1000 - time, 100);
+
+        if(${opt.correct}) {
+          this.style.background='rgba(100,200,100,0.2)';
+          this.style.borderColor='rgba(100,200,100,0.7)';
+          this.style.color='rgba(150,255,150,1)';
+          document.getElementById('k-fb').style.color='rgba(120,220,120,1)';
+          document.getElementById('k-fb').textContent='¡Correcto! +' + score + ' pts por velocidad ⚡';
+        } else {
+          this.style.background='rgba(255,80,80,0.15)';
+          this.style.borderColor='rgba(255,100,100,0.5)';
+          this.style.color='rgba(255,130,130,1)';
+          let correct=document.getElementById('k-B');
+          correct.style.background='rgba(100,200,100,0.2)';
+          correct.style.borderColor='rgba(100,200,100,0.7)';
+          correct.style.color='rgba(150,255,150,1)';
+          document.getElementById('k-fb').style.color='rgba(255,120,120,1)';
+          document.getElementById('k-fb').textContent='Incorrecto. Era JavaScript.';
+        }
+
+        document.getElementById('k-retry').style.display='inline-block';
+      ">
+        <span style="font-family:'Orbitron';font-size:0.6rem;font-weight:700;background:rgba(255,255,255,0.08);border-radius:4px;padding:2px 7px;">${opt.id}</span>
+        ${opt.text}
+      </div>
+    `,
+      )
+      .join("")}
+
+    <div id="k-fb" style="font-size:0.75rem;min-height:18px;margin-top:6px;font-style:italic;"></div>
+
+    <button id="k-retry" style="display:none;margin-top:6px;font-size:0.7rem;padding:4px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;" 
+    onclick="
+      let base='rgba(255,255,255,0.04)';
+      let bc='rgba(255,255,255,0.1)';
+      let tc='rgba(255,255,255,0.7)';
+      ['k-A','k-B','k-C','k-D'].forEach(i=>{
+        let o=document.getElementById(i);
+        o.style.background=base;
+        o.style.borderColor=bc;
+        o.style.color=tc;
+        o.style.cursor='pointer';
+      });
+      document.getElementById('k-fb').textContent='';
+      document.getElementById('k-retry').style.display='none';
+    ">
+      Intentar de nuevo
+    </button>
+  </div>
+
+  <p style="font-family:'Orbitron'; font-size:0.6rem; color:var(--m-accent,#7C3AED); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTOS</p>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
+    <div style="background:rgba(100,200,100,0.15); border:1px solid rgba(100,200,100,0.4); border-radius:8px; padding:8px 6px; text-align:center;">
+      <div style="font-size:0.6rem; color:rgba(120,220,120,1); font-family:'Orbitron'; font-weight:700;">Rápido ⚡</div>
+      <div style="font-size:0.7rem; color:white;">+1000 pts</div>
+    </div>
+    <div style="background:rgba(255,159,0,0.12); border:1px solid #7C3AED; border-radius:8px; padding:8px 6px; text-align:center;">
+      <div style="font-size:0.6rem; color:#7C3AED; font-family:'Orbitron'; font-weight:700;">Normal</div>
+      <div style="font-size:0.7rem; color:white;">+500 pts</div>
+    </div>
+    <div style="background:rgba(255,80,80,0.1); border:1px solid rgba(255,100,100,0.4); border-radius:8px; padding:8px 6px; text-align:center;">
+      <div style="font-size:0.6rem; color:rgba(255,120,120,1); font-family:'Orbitron'; font-weight:700;">Lento 🐢</div>
+      <div style="font-size:0.7rem; color:white;">+100 pts</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">
+    💡 No basta con saber la respuesta… debes ser más rápido que los demás.
+  </p>
+
+</div>
+
+<div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
+  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#7C3AED); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron'; font-size:0.6rem; color:#7C3AED; font-weight:700;">ADMIN</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
+      Crea la sala, genera el PIN, controla el flujo de preguntas y visualiza el ranking a finalizar la partida.
+    </span>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron'; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700;">JUGADOR</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65);">
+      Únete con el PIN, responde lo más rápido posible y compite en vivo contra otros jugadores. Solo los más rápidos dominan el ranking.
+    </span>
+  </div>
+</div>
+`,
       difficulty: 3,
       players: "Multijugador",
       team: [
