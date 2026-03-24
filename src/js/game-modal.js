@@ -170,37 +170,37 @@
 
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
       ${[
-        {
-          label: "Fácil",
-          val: "$100.000",
-          color: "rgba(100,200,100,0.15)",
-          border: "rgba(100,200,100,0.4)",
-          text: "rgba(120,220,120,1)",
-        },
-        {
-          label: "Media",
-          val: "$150.000",
-          color: "rgba(255,159,0,0.12)",
-          border: "var(--m-accent,#FF9F00)",
-          text: "var(--m-accent,#FF9F00)",
-        },
-        {
-          label: "Difícil",
-          val: "$175.000",
-          color: "rgba(255,80,80,0.1)",
-          border: "rgba(255,100,100,0.4)",
-          text: "rgba(255,120,120,1)",
-        },
-      ]
-        .map(
-          ({ label, val, color, border, text }) => `
+          {
+            label: "Fácil",
+            val: "$100.000",
+            color: "rgba(100,200,100,0.15)",
+            border: "rgba(100,200,100,0.4)",
+            text: "rgba(120,220,120,1)",
+          },
+          {
+            label: "Media",
+            val: "$150.000",
+            color: "rgba(255,159,0,0.12)",
+            border: "var(--m-accent,#FF9F00)",
+            text: "var(--m-accent,#FF9F00)",
+          },
+          {
+            label: "Difícil",
+            val: "$175.000",
+            color: "rgba(255,80,80,0.1)",
+            border: "rgba(255,100,100,0.4)",
+            text: "rgba(255,120,120,1)",
+          },
+        ]
+          .map(
+            ({ label, val, color, border, text }) => `
         <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
           <div style="font-size:0.6rem; color:${text}; font-family:'Orbitron',sans-serif; font-weight:700; margin-bottom:3px;">${label}</div>
           <div style="font-size:0.7rem; color:rgba(255,255,255,0.85); font-weight:600;">${val}</div>
         </div>
       `,
-        )
-        .join("")}
+          )
+          .join("")}
     </div>
 
     <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Las primeras 3 preguntas siempre son fáciles para ayudarte a empezar.</p>
@@ -209,29 +209,29 @@
 
     <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
       ${[
-        {
-          icon: "50/50",
-          label: "Cincuenta y Cincuenta",
-          desc: "Elimina 2 opciones incorrectas",
-        },
-        {
-          icon: "📞",
-          label: "Llamada a un amigo",
-          desc: "Consulta a un contacto — otorga 30 seg. extra",
-        },
-        {
-          icon: "🔄",
-          label: "Cambiar pregunta",
-          desc: "Cambia por otra de la misma dificultad",
-        },
-        {
-          icon: "👥",
-          label: "Ayuda del público",
-          desc: "La audiencia vota — otorga 1 min. extra",
-        },
-      ]
-        .map(
-          ({ icon, label, desc }) => `
+          {
+            icon: "50/50",
+            label: "Cincuenta y Cincuenta",
+            desc: "Elimina 2 opciones incorrectas",
+          },
+          {
+            icon: "📞",
+            label: "Llamada a un amigo",
+            desc: "Consulta a un contacto — otorga 30 seg. extra",
+          },
+          {
+            icon: "🔄",
+            label: "Cambiar pregunta",
+            desc: "Cambia por otra de la misma dificultad",
+          },
+          {
+            icon: "👥",
+            label: "Ayuda del público",
+            desc: "La audiencia vota — otorga 1 min. extra",
+          },
+        ]
+          .map(
+            ({ icon, label, desc }) => `
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
           <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
           <div>
@@ -240,8 +240,8 @@
           </div>
         </div>
       `,
-        )
-        .join("")}
+          )
+          .join("")}
     </div>
 
   </div>
@@ -285,8 +285,8 @@
       number: "03",
       title: "Salva el Conocimiento",
       emoji: "🪢",
-      accent: "#00C2FF",
-      accentBg: "rgba(0,194,255,0.12)",
+      accent: "#FF2D9B",
+      accentBg: "rgba(255,45,155,0.12)",
       tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc:
         "Adivina la palabra letra por letra antes de que el personaje caiga.",
@@ -295,7 +295,7 @@
 
 <div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
 
-  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// EJEMPLO DE PARTIDA</p>
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF2D9B); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// EJEMPLO DE PARTIDA</p>
 
   <div id="hg-demo" style="margin-bottom:1.2rem;">
     <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 14px; margin-bottom:10px; text-align:center;">
@@ -313,10 +313,10 @@
         this.style.opacity='0.3';
         this.style.cursor='default';
         if(letters['${l}']){
-          this.style.background='rgba(0,194,255,0.2)';
-          this.style.borderColor='rgba(0,194,255,0.6)';
-          this.style.color='rgba(0,220,255,1)';
-          document.getElementById('hg-fb').style.color='rgba(0,220,255,1)';
+          this.style.background='rgba(255,45,155,0.2)';
+          this.style.borderColor='rgba(255,45,155,0.6)';
+          this.style.color='rgba(255,80,180,1)';
+          document.getElementById('hg-fb').style.color='rgba(255,80,180,1)';
           document.getElementById('hg-fb').textContent='¡Bien! La letra ${l} está en la palabra.';
         } else {
           this.style.background='rgba(255,80,80,0.15)';
@@ -335,12 +335,12 @@
     <div id="hg-fb" style="font-size:0.75rem; min-height:18px; margin-top:6px; font-style:italic; text-align:center;"></div>
   </div>
 
-  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF2D9B); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
 
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
     ${[
           { label: "Fácil", val: "$100.000", color: "rgba(100,200,100,0.15)", border: "rgba(100,200,100,0.4)", text: "rgba(120,220,120,1)" },
-          { label: "Media", val: "$150.000", color: "rgba(0,194,255,0.12)", border: "var(--m-accent,#00C2FF)", text: "var(--m-accent,#00C2FF)" },
+          { label: "Media", val: "$150.000", color: "rgba(255,45,155,0.12)", border: "var(--m-accent,#FF2D9B)", text: "var(--m-accent,#FF2D9B)" },
           { label: "Difícil", val: "$175.000", color: "rgba(255,80,80,0.1)", border: "rgba(255,100,100,0.4)", text: "rgba(255,120,120,1)" },
         ].map(({ label, val, color, border, text }) => `
       <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
@@ -352,7 +352,7 @@
 
   <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Puedes equivocarte hasta 6 veces antes de perder la partida.</p>
 
-  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// PISTAS DISPONIBLES</p>
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF2D9B); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// PISTAS DISPONIBLES</p>
 
   <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
     ${[
@@ -364,7 +364,7 @@
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
         <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
         <div>
-          <div style="font-size:0.65rem; color:var(--m-accent,#00C2FF); font-weight:700; margin-bottom:2px;">${label}</div>
+          <div style="font-size:0.65rem; color:var(--m-accent,#FF2D9B); font-weight:700; margin-bottom:2px;">${label}</div>
           <div style="font-size:0.72rem; color:rgba(255,255,255,0.55); line-height:1.5;">${desc}</div>
         </div>
       </div>
@@ -374,8 +374,8 @@
 </div>
 
 <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
-  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#00C2FF); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
-    <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
+  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#FF2D9B); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#FF2D9B); font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
     <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Gestiona el banco de palabras por categoría y dificultad, administra las cuentas de jugadores y controla la configuración general de la partida.</span>
   </div>
   <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
@@ -425,40 +425,40 @@
           </div>
           <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:5px;">
             ${[
-              "Don Quijote",
-              "García Márquez",
-              "El Principito",
-              "Neruda",
-              "Cien Años",
-              "Isabel Allende",
-              "La Odisea",
-              "Borges",
-              "Cortázar",
-              "Romeo y Julieta",
-              "Kafka",
-              "Anna Karenina",
-              "FREE",
-              "Cervantes",
-              "Hamlet",
-              "Vargas Llosa",
-              "El Túnel",
-              "Paz",
-              "Dostoievski",
-              "La Ilíada",
-              "Rulfo",
-              "Lorca",
-              "Poe",
-              "Woolf",
-              "Benedetti",
-            ]
-              .map(
-                (t, i) => `<div
+          "Don Quijote",
+          "García Márquez",
+          "El Principito",
+          "Neruda",
+          "Cien Años",
+          "Isabel Allende",
+          "La Odisea",
+          "Borges",
+          "Cortázar",
+          "Romeo y Julieta",
+          "Kafka",
+          "Anna Karenina",
+          "FREE",
+          "Cervantes",
+          "Hamlet",
+          "Vargas Llosa",
+          "El Túnel",
+          "Paz",
+          "Dostoievski",
+          "La Ilíada",
+          "Rulfo",
+          "Lorca",
+          "Poe",
+          "Woolf",
+          "Benedetti",
+        ]
+          .map(
+            (t, i) => `<div
               class="eb-cell${i === 12 ? " eb-marked" : ""}"
               data-idx="${i}"
               style="background:${i === 12 ? "var(--m-accent,#00F5FF)" : "rgba(255,255,255,0.04)"}; border:1px solid ${i === 12 ? "var(--m-accent,#00F5FF)" : "rgba(255,255,255,0.08)"}; border-radius:8px; padding:7px 4px; text-align:center; font-size:0.52rem; color:${i === 12 ? "#000" : "rgba(255,255,255,0.6)"}; font-weight:${i === 12 ? "700" : "400"}; line-height:1.4; cursor:pointer; transition:all 0.18s ease; min-height:44px; display:flex; align-items:center; justify-content:center;"
             >${t}</div>`,
-              )
-              .join("")}
+          )
+          .join("")}
           </div>
           <p style="font-size:0.65rem; color:rgba(255,255,255,0.25); text-align:center; margin-top:0.6rem; font-family:'Orbitron',sans-serif; letter-spacing:0.08em;">HAZ CLIC EN LAS CASILLAS PARA MARCARLAS</p>
         </div>
@@ -521,13 +521,13 @@
     </div>
 
     ${[
-      { id: "A", text: "PHP", correct: false },
-      { id: "B", text: "JavaScript", correct: true },
-      { id: "C", text: "SQL", correct: false },
-      { id: "D", text: "Python", correct: false },
-    ]
-      .map(
-        (opt) => `
+          { id: "A", text: "PHP", correct: false },
+          { id: "B", text: "JavaScript", correct: true },
+          { id: "C", text: "SQL", correct: false },
+          { id: "D", text: "Python", correct: false },
+        ]
+          .map(
+            (opt) => `
       <div id="k-${opt.id}" style="display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;margin-bottom:6px;cursor:pointer;font-size:0.78rem;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);" 
       onclick="
         if(this.style.cursor==='default')return;
@@ -564,8 +564,8 @@
         ${opt.text}
       </div>
     `,
-      )
-      .join("")}
+          )
+          .join("")}
 
     <div id="k-fb" style="font-size:0.75rem;min-height:18px;margin-top:6px;font-style:italic;"></div>
 
@@ -1989,11 +1989,10 @@
     return `
       <div class="gz-member-card">
         <div class="gz-member-photo${hasPhoto ? "" : " gz-no-photo"}">
-          ${
-            hasPhoto
-              ? `<img src="${m.photo}" alt="${m.name}" loading="lazy">`
-              : `<div class="gz-initials">${m.initials}</div>`
-          }
+          ${hasPhoto
+        ? `<img src="${m.photo}" alt="${m.name}" loading="lazy">`
+        : `<div class="gz-initials">${m.initials}</div>`
+      }
           <div class="gz-photo-hint">
             <div class="gz-hint-icon">📷</div>
             <span>Foto del integrante</span>
