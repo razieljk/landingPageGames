@@ -126,7 +126,7 @@
     {
       id: 2,
       number: "02",
-      title: "¿Quién Quiere Ser Aprendiz?",
+      title: "Millonarios del Saber",
       emoji: "💰",
       accent: "#FF9F00",
       accentBg: "rgba(255,159,0,0.12)",
