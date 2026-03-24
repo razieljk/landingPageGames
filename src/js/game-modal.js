@@ -283,43 +283,126 @@
     {
       id: 3,
       number: "03",
-      title: "Salva el conocimiento",
+      title: "Salva el Conocimiento",
       emoji: "🪢",
-      accent: "#FF00A0",
-      accentBg: "rgba(255,0,160,0.12)",
-      tags: ["PHP", "JS", "SQL"],
+      accent: "#00C2FF",
+      accentBg: "rgba(0,194,255,0.12)",
+      tags: ["PHP", "JS", "CSS", "SQL"],
       shortDesc:
-        "Adivina la palabra letra por letra antes de quedarte sin intentos.",
+        "Adivina la palabra letra por letra antes de que el personaje caiga.",
       howToPlay: `
-        <p>El clásico juego del ahorcado: descifra la palabra oculta antes de que el dibujo se complete.</p>
-        <ul>
-          <li>🔡 Se muestra una serie de guiones que representan las letras de la palabra secreta.</li>
-          <li>⌨️ Selecciona letras del abecedario para intentar adivinar la palabra.</li>
-          <li>✅ Si la letra está en la palabra, se revela en su posición correcta.</li>
-          <li>❌ Si la letra no está, se dibuja una parte del ahorcado — tienes <strong>6 errores</strong> máximo.</li>
-          <li>🗃️ Las palabras son aleatorias y se obtienen desde la base de datos, con categorías variadas.</li>
-          <li>🏅 Cuantas menos pistas uses, mayor será tu puntuación.</li>
-        </ul>
-      `,
+<p>Inspirado en el clásico juego del ahorcado. Adivina la palabra oculta eligiendo letras una a una. Cada error acerca al personaje a su destino. Usa tus pistas con inteligencia y escala en el ranking.</p>
+
+<div style="margin:1.4rem 0; font-family:'Exo 2',sans-serif;">
+
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// EJEMPLO DE PARTIDA</p>
+
+  <div id="hg-demo" style="margin-bottom:1.2rem;">
+    <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 14px; margin-bottom:10px; text-align:center;">
+      <div style="font-size:0.65rem; color:rgba(255,255,255,0.4); font-family:'Orbitron',sans-serif; margin-bottom:6px;">CATEGORÍA: CIENCIAS</div>
+      <div id="hg-word" style="font-family:'Orbitron',sans-serif; font-size:1.1rem; letter-spacing:0.35em; color:rgba(255,255,255,0.9); font-weight:700;">_ _ _ _ _ _ _</div>
+      <div id="hg-err" style="font-size:0.7rem; color:rgba(255,100,100,0.8); margin-top:6px;">Errores: <span id="hg-count">0</span> / 6</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin-bottom:10px;">
+      ${['A', 'T', 'O', 'M', 'G', 'R'].map(l => `
+      <div onclick="
+        var letters={'A':true,'T':true,'O':true,'M':true,'G':false,'R':false};
+        var word=['_','T','O','_','_','_','_'];
+        if(this.style.opacity==='0.3')return;
+        this.style.opacity='0.3';
+        this.style.cursor='default';
+        if(letters['${l}']){
+          this.style.background='rgba(0,194,255,0.2)';
+          this.style.borderColor='rgba(0,194,255,0.6)';
+          this.style.color='rgba(0,220,255,1)';
+          document.getElementById('hg-fb').style.color='rgba(0,220,255,1)';
+          document.getElementById('hg-fb').textContent='¡Bien! La letra ${l} está en la palabra.';
+        } else {
+          this.style.background='rgba(255,80,80,0.15)';
+          this.style.borderColor='rgba(255,100,100,0.5)';
+          this.style.color='rgba(255,130,130,1)';
+          var c=parseInt(document.getElementById('hg-count').textContent)+1;
+          document.getElementById('hg-count').textContent=c;
+          document.getElementById('hg-fb').style.color='rgba(255,120,120,1)';
+          document.getElementById('hg-fb').textContent='La letra ${l} no está en la palabra.';
+        }
+      "
+      style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(255,255,255,0.15);border-radius:7px;cursor:pointer;font-size:0.78rem;font-family:'Orbitron',sans-serif;font-weight:700;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.05);">${l}</div>
+      `).join('')}
+    </div>
+
+    <div id="hg-fb" style="font-size:0.75rem; min-height:18px; margin-top:6px; font-style:italic; text-align:center;"></div>
+  </div>
+
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// SISTEMA DE PUNTAJE</p>
+
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
+    ${[
+          { label: "Fácil", val: "$100.000", color: "rgba(100,200,100,0.15)", border: "rgba(100,200,100,0.4)", text: "rgba(120,220,120,1)" },
+          { label: "Media", val: "$150.000", color: "rgba(0,194,255,0.12)", border: "var(--m-accent,#00C2FF)", text: "var(--m-accent,#00C2FF)" },
+          { label: "Difícil", val: "$175.000", color: "rgba(255,80,80,0.1)", border: "rgba(255,100,100,0.4)", text: "rgba(255,120,120,1)" },
+        ].map(({ label, val, color, border, text }) => `
+      <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
+        <div style="font-size:0.6rem; color:${text}; font-family:'Orbitron',sans-serif; font-weight:700; margin-bottom:3px;">${label}</div>
+        <div style="font-size:0.7rem; color:rgba(255,255,255,0.85); font-weight:600;">${val}</div>
+      </div>
+    `).join('')}
+  </div>
+
+  <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Puedes equivocarte hasta 6 veces antes de perder la partida.</p>
+
+  <p style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; letter-spacing:0.1em; margin-bottom:0.8rem;">// PISTAS DISPONIBLES</p>
+
+  <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
+    ${[
+          { icon: "💡", label: "Revelar letra", desc: "Descubre una letra al azar en la palabra" },
+          { icon: "📖", label: "Ver categoría", desc: "Muestra la categoría temática de la palabra" },
+          { icon: "✂️", label: "Eliminar consonante", desc: "Elimina una consonante incorrecta del tablero" },
+          { icon: "🔍", label: "Definición", desc: "Muestra una pista sobre el significado de la palabra" },
+        ].map(({ icon, label, desc }) => `
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
+        <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
+        <div>
+          <div style="font-size:0.65rem; color:var(--m-accent,#00C2FF); font-weight:700; margin-bottom:2px;">${label}</div>
+          <div style="font-size:0.72rem; color:rgba(255,255,255,0.55); line-height:1.5;">${desc}</div>
+        </div>
+      </div>
+    `).join('')}
+  </div>
+
+</div>
+
+<div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.4rem;">
+  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid var(--m-accent,#00C2FF); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--m-accent,#00C2FF); font-weight:700; white-space:nowrap; padding-top:1px;">ADMIN</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Gestiona el banco de palabras por categoría y dificultad, administra las cuentas de jugadores y controla la configuración general de la partida.</span>
+  </div>
+  <div style="display:flex; align-items:flex-start; gap:0.8rem; background:rgba(255,255,255,0.03); border-left:2px solid rgba(255,255,255,0.2); border-radius:0 8px 8px 0; padding:0.6rem 0.9rem;">
+    <span style="font-family:'Orbitron',sans-serif; font-size:0.6rem; color:rgba(255,255,255,0.4); font-weight:700; white-space:nowrap; padding-top:1px;">JUGADOR</span>
+    <span style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6;">Elige una categoría e intenta adivinar la palabra letra a letra. Tienes <strong>6 intentos fallidos</strong> antes de perder. Cada pista se usa una sola vez. Solo se guarda tu <strong>mejor resultado</strong> en el ranking.</span>
+  </div>
+</div>
+`,
       difficulty: 2,
       players: "1 jugador",
       team: [
         {
-          initials: "AA",
-          name: "Nombre Apellido",
-          role: "Programador principal",
+          initials: "FP",
+          name: "Ángel David Agudelo Cuartas",
+          role: "Integrante del equipo",
           photo: "./src/img/ahorcado/aa.jpg",
         },
         {
-          initials: "BB",
-          name: "Nombre Apellido",
-          role: "Diseño y UI",
+          initials: "YG",
+          name: "Cristian Camilo Peña",
+          role: "Integrante del equipo",
           photo: "",
         },
         {
-          initials: "CC",
-          name: "Nombre Apellido",
-          role: "Base de datos",
+          initials: "CS",
+          name: "Edgar Fernando Benavidez Perez",
+          role: "Integrante del equipo",
           photo: "",
         },
       ],
