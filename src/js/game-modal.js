@@ -119,7 +119,7 @@
           initials: "foto",
           name: "Juan Sebastian Trujillo Serna",
           role: "Desarrollador",
-          photo: "",
+          photo: "./src/img/photos/juan.jpeg",
         },
       ],
     },
@@ -264,19 +264,19 @@
           initials: "FP",
           name: "Franklin Andres Penilla Jaramillo",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/frank.jpeg",
         },
         {
           initials: "YG",
           name: "Yesly Yasiri Gomez Giraldo",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/yasiri.jpeg",
         },
         {
           initials: "CS",
           name: "Cristian Camilo Bermudez Sierra",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/cristian.jpeg",
         },
       ],
     },
@@ -305,7 +305,9 @@
     </div>
 
     <div style="display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin-bottom:10px;">
-      ${['A', 'T', 'O', 'M', 'G', 'R'].map(l => `
+      ${["A", "T", "O", "M", "G", "R"]
+        .map(
+          (l) => `
       <div onclick="
         var letters={'A':true,'T':true,'O':true,'M':true,'G':false,'R':false};
         var word=['_','T','O','_','_','_','_'];
@@ -329,7 +331,9 @@
         }
       "
       style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(255,255,255,0.15);border-radius:7px;cursor:pointer;font-size:0.78rem;font-family:'Orbitron',sans-serif;font-weight:700;color:rgba(255,255,255,0.75);background:rgba(255,255,255,0.05);">${l}</div>
-      `).join('')}
+      `,
+        )
+        .join("")}
     </div>
 
     <div id="hg-fb" style="font-size:0.75rem; min-height:18px; margin-top:6px; font-style:italic; text-align:center;"></div>
@@ -339,15 +343,37 @@
 
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5px; margin-bottom:1.2rem;">
     ${[
-          { label: "Fácil", val: "$100.000", color: "rgba(100,200,100,0.15)", border: "rgba(100,200,100,0.4)", text: "rgba(120,220,120,1)" },
-          { label: "Media", val: "$150.000", color: "rgba(0,194,255,0.12)", border: "var(--m-accent,#00C2FF)", text: "var(--m-accent,#00C2FF)" },
-          { label: "Difícil", val: "$175.000", color: "rgba(255,80,80,0.1)", border: "rgba(255,100,100,0.4)", text: "rgba(255,120,120,1)" },
-        ].map(({ label, val, color, border, text }) => `
+      {
+        label: "Fácil",
+        val: "$100.000",
+        color: "rgba(100,200,100,0.15)",
+        border: "rgba(100,200,100,0.4)",
+        text: "rgba(120,220,120,1)",
+      },
+      {
+        label: "Media",
+        val: "$150.000",
+        color: "rgba(0,194,255,0.12)",
+        border: "var(--m-accent,#00C2FF)",
+        text: "var(--m-accent,#00C2FF)",
+      },
+      {
+        label: "Difícil",
+        val: "$175.000",
+        color: "rgba(255,80,80,0.1)",
+        border: "rgba(255,100,100,0.4)",
+        text: "rgba(255,120,120,1)",
+      },
+    ]
+      .map(
+        ({ label, val, color, border, text }) => `
       <div style="background:${color}; border:1px solid ${border}; border-radius:8px; padding:8px 6px; text-align:center;">
         <div style="font-size:0.6rem; color:${text}; font-family:'Orbitron',sans-serif; font-weight:700; margin-bottom:3px;">${label}</div>
         <div style="font-size:0.7rem; color:rgba(255,255,255,0.85); font-weight:600;">${val}</div>
       </div>
-    `).join('')}
+    `,
+      )
+      .join("")}
   </div>
 
   <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-bottom:1.2rem; font-style:italic;">💡 Puedes equivocarte hasta 6 veces antes de perder la partida.</p>
@@ -356,11 +382,29 @@
 
   <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.2rem;">
     ${[
-          { icon: "💡", label: "Revelar letra", desc: "Descubre una letra al azar en la palabra" },
-          { icon: "📖", label: "Ver categoría", desc: "Muestra la categoría temática de la palabra" },
-          { icon: "✂️", label: "Eliminar consonante", desc: "Elimina una consonante incorrecta del tablero" },
-          { icon: "🔍", label: "Definición", desc: "Muestra una pista sobre el significado de la palabra" },
-        ].map(({ icon, label, desc }) => `
+      {
+        icon: "💡",
+        label: "Revelar letra",
+        desc: "Descubre una letra al azar en la palabra",
+      },
+      {
+        icon: "📖",
+        label: "Ver categoría",
+        desc: "Muestra la categoría temática de la palabra",
+      },
+      {
+        icon: "✂️",
+        label: "Eliminar consonante",
+        desc: "Elimina una consonante incorrecta del tablero",
+      },
+      {
+        icon: "🔍",
+        label: "Definición",
+        desc: "Muestra una pista sobre el significado de la palabra",
+      },
+    ]
+      .map(
+        ({ icon, label, desc }) => `
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:0.6rem 0.8rem; display:flex; align-items:flex-start; gap:0.6rem;">
         <span style="font-size:1rem; min-width:24px; text-align:center;">${icon}</span>
         <div>
@@ -368,7 +412,9 @@
           <div style="font-size:0.72rem; color:rgba(255,255,255,0.55); line-height:1.5;">${desc}</div>
         </div>
       </div>
-    `).join('')}
+    `,
+      )
+      .join("")}
   </div>
 
 </div>
@@ -391,19 +437,19 @@
           initials: "FP",
           name: "Ángel David Agudelo Cuartas",
           role: "Integrante del equipo",
-          photo: "./src/img/ahorcado/aa.jpg",
+          photo: "./src/img/photos/angel.jpeg",
         },
         {
           initials: "YG",
           name: "Cristian Camilo Peña",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/peña.jpeg",
         },
         {
           initials: "CS",
           name: "Edgar Fernando Benavidez Perez",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/edgar.jpeg",
         },
       ],
     },
@@ -481,19 +527,19 @@
           initials: "DR",
           name: "Daniel Felipe Ramírez Navarro",
           role: "Integrante del equipo",
-          photo: "./src/img/bingo-literario/dr.jpg",
+          photo: "./src/img/photos/daniel.jpeg",
         },
         {
           initials: "SG",
           name: "Santiago Gaviria Acevedo",
           role: "Integrante del equipo",
-          photo: "./src/img/bingo-literario/sg.jpg",
+          photo: "./src/img/photos/santiago.jpeg",
         },
         {
           initials: "BM",
           name: "Brahian Stiven Monsalve Idarraga",
           role: "Integrante del equipo",
-          photo: "./src/img/bingo-literario/sm.jpg",
+          photo: "./src/img/photos/mora.jpeg",
         },
       ],
     },
@@ -634,13 +680,13 @@
           initials: "CR",
           name: "Cesar Augusto Rodas",
           role: "Integrante",
-          photo: "",
+          photo: "./src/img/photos/cesar.jpeg",
         },
         {
           initials: "MH",
           name: "Mateo Hoyos Hernandez",
           role: "Integrante",
-          photo: "",
+          photo: "./src/img/photos/mateo.jpeg",
         },
       ],
     },
@@ -693,19 +739,19 @@
           initials: "AA",
           name: "Jerson Estiven Bedoya",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/steven.jpeg",
         },
         {
           initials: "BB",
           name: "Cristoffer Arley Jaramillo",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/cristopher.jpeg",
         },
         {
           initials: "CC",
           name: "Diego Fernando Aponte",
           role: "Integrante del equipo",
-          photo: "",
+          photo: "./src/img/photos/diego.jpeg",
         },
       ],
     },
